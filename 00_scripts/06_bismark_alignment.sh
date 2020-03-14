@@ -19,6 +19,7 @@ OUTPUT=/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark
 cd $OUTPUT
 
 #bismark -l 30 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
-bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+#bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+bismark -l 10 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
 
 
