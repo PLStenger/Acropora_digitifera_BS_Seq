@@ -23,7 +23,19 @@ cd $OUTPUT
 #bismark -l 30 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
 #bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
 #bismark -l 10 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+#bismark -l 20 -n 1 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
 
-bismark -l 20 -n 1 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5b_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5b_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5b.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5c_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5c_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5c.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_3_30a_R1_paired.fastq.gz -2 $READS/Acclimation_3_30a_R2_paired.fastq.gz > $OUTPUT/Acclimation_3_30a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_3_30b_R1_paired.fastq.gz -2 $READS/Acclimation_3_30b_R2_paired.fastq.gz > $OUTPUT/Acclimation_3_30b.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_3_30c_R1_paired.fastq.gz -2 $READS/Acclimation_3_30c_R2_paired.fastq.gz > $OUTPUT/Acclimation_3_30c.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_3_30a_R1_paired.fastq.gz -2 $READS/Control_3_30a_R2_paired.fastq.gz > $OUTPUT/Control_3_30a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_3_30b_R1_paired.fastq.gz -2 $READS/Control_3_30b_R2_paired.fastq.gz > $OUTPUT/Control_3_30b.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_3_30c_R1_paired.fastq.gz -2 $READS/Control_3_30c_R2_paired.fastq.gz > $OUTPUT/Control_3_30c.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30a_R1_paired.fastq.gz -2 $READS/Control_1_30a_R2_paired.fastq.gz > $OUTPUT/Control_1_30a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30b_R1_paired.fastq.gz -2 $READS/Control_1_30b_R2_paired.fastq.gz > $OUTPUT/Control_1_30b.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30c_R1_paired.fastq.gz -2 $READS/Control_1_30c_R2_paired.fastq.gz > $OUTPUT/Control_1_30c.sam
 
 
