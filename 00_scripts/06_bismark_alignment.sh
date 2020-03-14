@@ -16,6 +16,9 @@ GENOME=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/GCF_000222465.1_Adig_1.1_g
 READS=/home/stenger/stenger_data/EPIGENETIC_DATA/03_trimmed
 OUTPUT=/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark
 
-bismark -l 30 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+cd $OUTPUT
+
+#bismark -l 30 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
+bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Acclimation_1_31_5a_R1_paired.fastq.gz -2 $READS/Acclimation_1_31_5a_R2_paired.fastq.gz > $OUTPUT/Acclimation_1_31_5a.sam
 
 
