@@ -10,6 +10,7 @@
     nohup bash 07_bismark_alignment_deduplicate.sh &> 07_bismark_alignment_deduplicate.out &
     nohup bash 08_sort_bam.sh &> 08_sort_bam.out &
     nohup bash 09_bismark_methylation_extractor.sh &> 09_bismark_methylation_extractor.out &
+    nohup bash 10_flagstat.sh &> 10_flagstat.out &
     
 ## Check it
     ps aux | grep stenger
