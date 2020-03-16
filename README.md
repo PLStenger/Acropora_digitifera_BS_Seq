@@ -5,6 +5,7 @@
 ## Run and go
     nohup bash 02_fastqc_raw_data.sh &
     nohup bash 03_trimmomatic_q28.sh &> 03_trimmomatic_q28.out &
+    nohup bash 04_fastqc_trimmed.sh &> 04_fastqc_trimmed.out &
     nohup bash 05_bismark_genome_preparation.sh &> 05_bismark_genome_preparation.out &
     nohup bash 06_bismark_alignment.sh &> 06_bismark_alignment.out &
     nohup bash 07_bismark_alignment_deduplicate.sh &> 07_bismark_alignment_deduplicate.out &
@@ -17,3 +18,4 @@
 
 ## kill it
     kill XxXxNumberXxXx
+
