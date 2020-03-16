@@ -7,10 +7,10 @@ NCPU=4
 
 cd $DATADIRECTORY
 
-for FILE in $(ls $DATADIRECTORY/*_sorted.bam)
+#for FILE in $(ls $DATADIRECTORY/*_sorted.bam)
+#do
+#bismark_methylation_extractor -p --no_overlap --bedGraph --scaffolds --cytosine_report --genome_folder $GENOME --multicore $NCPU $DATADIRECTORY/${FILE##*/} -o $OUTPUT
+#done ;
 
-do
 
-bismark_methylation_extractor -p --no_overlap --bedGraph --scaffolds --cytosine_report --genome_folder $GENOME --multicore $NCPU $DATADIRECTORY/${FILE##*/} -o $OUTPUT
-
-done ;
+bismark_methylation_extractor -p --no_overlap --bedGraph --scaffolds --cytosine_report --genome_folder $GENOME --multicore $NCPU $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam -o $OUTPUT
