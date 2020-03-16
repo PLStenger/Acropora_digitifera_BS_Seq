@@ -3,5 +3,17 @@
 
 DATADIRECTORY=/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark
 
-deduplicate_bismark --bam $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe_deduplicate.bam
+cd $DATADIRECTORY
 
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_1_31_5b_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_1_31_5c_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_1_31_5c_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_3_30a_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_3_30a_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_3_30b_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_3_30b_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Acclimation_3_30c_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Acclimation_3_30c_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_1_30a_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_1_30a_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_1_30b_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_1_30b_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_1_30c_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_1_30c_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_3_30a_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_3_30a_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_3_30b_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_3_30b_R1_paired_bismark_bt2_pe_deduplicate.bam
+deduplicate_bismark --bam $DATADIRECTORY/Control_3_30c_R1_paired_bismark_bt2_pe.bam > $DATADIRECTORY/Control_3_30c_R1_paired_bismark_bt2_pe_deduplicate.bam
