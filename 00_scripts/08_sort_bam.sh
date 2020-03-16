@@ -4,7 +4,7 @@ DATADIRECTORY=/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark
 
 cd $DATADIRECTORY
 
-for FILE in $(ls $DATADIRECTORY/*deduplicate.bam)
+for FILE in $(ls $DATADIRECTORY/*deduplicated.bam)
 
 do
 
