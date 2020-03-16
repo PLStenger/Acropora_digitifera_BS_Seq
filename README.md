@@ -7,7 +7,10 @@
     nohup bash 03_trimmomatic_q28.sh &> 03_trimmomatic_q28.out &
     nohup bash 05_bismark_genome_preparation.sh &> 05_bismark_genome_preparation.out &
     nohup bash 06_bismark_alignment.sh &> 06_bismark_alignment.out &
-
+    nohup bash 07_bismark_alignment_deduplicate.sh &> 07_bismark_alignment_deduplicate.out &
+    nohup bash 08_sort_bam.sh &> 08_sort_bam.out &
+    nohup bash 09_bismark_methylation_extractor.sh &> 09_bismark_methylation_extractor.out &
+    
 ## Check it
     ps aux | grep stenger
 
