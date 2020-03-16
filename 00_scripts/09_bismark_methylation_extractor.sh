@@ -13,4 +13,4 @@ cd $DATADIRECTORY
 #done ;
 
 
-bismark_methylation_extractor -p --no_overlap --bedGraph --scaffolds --cytosine_report --genome_folder $GENOME --multicore $NCPU $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam -o $OUTPUT
+bismark_methylation_extractor -p --no_overlap --bedGraph --scaffolds --cytosine_report --genome_folder $GENOME --multicore $NCPU $DATADIRECTORY/Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.deduplicated.bam -o $OUTPUT
