@@ -13,6 +13,8 @@
     nohup bash 09_bismark_methylation_extractor.sh &> 09_bismark_methylation_extractor.out &
     nohup bash 10_flagstat.sh &> 10_flagstat.out &
     nohup bash 11_index_bam.sh &> 11_index_bam.out &
+    nohup bash 12_methylkit_CpG_calling.sh &> 12_methylkit_CpG_calling.out &
+
     
 ## Check it
     ps aux | grep stenger
