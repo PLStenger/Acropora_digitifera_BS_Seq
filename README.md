@@ -12,6 +12,7 @@
     nohup bash 08_sort_bam.sh &> 08_sort_bam.out &
     nohup bash 09_bismark_methylation_extractor.sh &> 09_bismark_methylation_extractor.out &
     nohup bash 10_flagstat.sh &> 10_flagstat.out &
+    nohup bash 11_index_bam.sh &> 11_index_bam.out &
     
 ## Check it
     ps aux | grep stenger
