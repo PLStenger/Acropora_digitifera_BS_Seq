@@ -16,7 +16,7 @@
 
 GENOME=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/GCF_000222465.1_Adig_1.1_genomic_fna/GCF_000222465.1_Adig_1.1_genomic_fna
 READS=/home/stenger/stenger_data/EPIGENETIC_DATA/03_trimmed
-OUTPUT=/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark
+OUTPUT=/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark
 
 cd $OUTPUT
 
@@ -37,5 +37,4 @@ bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_3_30c_R1_paired.fa
 bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30a_R1_paired.fastq.gz -2 $READS/Control_1_30a_R2_paired.fastq.gz > $OUTPUT/Control_1_30a.sam
 bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30b_R1_paired.fastq.gz -2 $READS/Control_1_30b_R2_paired.fastq.gz > $OUTPUT/Control_1_30b.sam
 bismark -l 20 -n 0 -p 4 -q --genome $GENOME -1 $READS/Control_1_30c_R1_paired.fastq.gz -2 $READS/Control_1_30c_R2_paired.fastq.gz > $OUTPUT/Control_1_30c.sam
-
 
