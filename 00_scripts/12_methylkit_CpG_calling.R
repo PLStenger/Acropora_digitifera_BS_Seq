@@ -4,7 +4,7 @@ library(methylKit)
 library(graphics)
 library(tools)
 
-setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_bismark")
+setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
 
 #########################################################################################
 ### GET METHYLATION FROM SORTED BISMARK ALIGNEMENT OR READ THE METHYLATION CALL FILES ###
