@@ -145,8 +145,10 @@ save(Allmeth.norm, file = "Allmeth.norm.rda")
 message("unite.filtered.normalized.myallmeth.done")
 
 ##### PCA, infos, and hclust
-layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+#layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
 PCASamples(Allmeth.norm)
+PCASamples(Allmeth.norm, obj.return=TRUE)
+PCASamples(Allmeth.norm, obj.return=TRUE,transpose=FALSE) 
 PCASamples(Allmeth.norm, screeplot=TRUE)
 clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE)
 
@@ -159,127 +161,207 @@ perc.Allmeth.norm <- percMethylation(Allmeth.norm)
 write.table(perc.Allmeth.norm, file = "Allmeth.norm.percent.txt", sep = "\t", quote = FALSE)
 message("done perc meth.norm")
 
-#################################################### REORGANIZE ##############################################
-## We need to reorganize because with have a lot of comparison and it's impossible to compare all the conditions togethers
-
-
-                                          ######################################
-                                          ### Acclimation_1_VS_Acclimation_3 ###
-                                          ######################################
-
-
-########################################### object from processBismarkAln ####################################
-Acclimation_1_VS_Acclimation_3_processBismarkAln=reorganize(my_meth_acclimation, 
-	sample.ids=c("Acclimation_1_31_5a",
-			         "Acclimation_1_31_5b",
-			         "Acclimation_1_31_5c",
-			         "Acclimation_3_30a",
-			         "Acclimation_3_30b",
-			         "Acclimation_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-############################################# object from unite function #####################################
-Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
-	sample.ids=c("Acclimation_1_31_5a",
-			   "Acclimation_1_31_5b",
-			   "Acclimation_1_31_5c",
-			   "Acclimation_3_30a",
-			   "Acclimation_3_30b",
-			   "Acclimation_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-######################################### DIFFERENTIAL METHYLATION ANALYSIS ##################################
-Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, mc.cores = 4)
-save(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.rda")
-write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
-message("Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite done")
-
-Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
-write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
-write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
-write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
-
-
-                                          ######################################
-                                          ##### Acclimation_1_VS_Control_1 #####
-                                          ######################################
-
-
-########################################### object from processBismarkAln ####################################
-Acclimation_1_VS_Control_1_processBismarkAln=reorganize(my_meth_acclimation, 
-	sample.ids=c("Acclimation_1_31_5a",
-			         "Acclimation_1_31_5b",
-			         "Acclimation_1_31_5c",
-			         "Control_1_30a",
-			         "Control_1_30b",
-			         "Control_1_30c"),
-	treatment=c(0,0,0,1,1,1))
-############################################# object from unite function #####################################
-Acclimation_1_VS_Control_1_Allmeth.norm_unite=reorganize(Allmeth.norm, 
-	sample.ids=c("Acclimation_1_31_5a",
-			   "Acclimation_1_31_5b",
-			   "Acclimation_1_31_5c",
-			   "Control_1_30a",
-			   "Control_1_30b",
-			   "Control_1_30c"),
-	treatment=c(0,0,0,1,1,1))
-######################################### DIFFERENTIAL METHYLATION ANALYSIS ##################################
-Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Control_1_Allmeth.norm_unite, mc.cores = 4)
-save(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.rda")
-write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
-message("Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite done")
-
-Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
-write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
-write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
-write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
-
-
-
-                                          ######################################
-                                          ##### Acclimation_1_VS_Control_3 #####
-                                          ######################################
-
-
-########################################### object from processBismarkAln ####################################
-Acclimation_1_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
-	sample.ids=c("Acclimation_1_31_5a",
-			         "Acclimation_1_31_5b",
-			         "Acclimation_1_31_5c",
-			         "Control_3_30a",
-			         "Control_3_30b",
-			         "Control_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-############################################# object from unite function #####################################
-Acclimation_1_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
-	sample.ids=c("Acclimation_1_31_5a",
-			   "Acclimation_1_31_5b",
-			   "Acclimation_1_31_5c",
-			   "Control_3_30a",
-			   "Control_3_30b",
-			   "Control_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-######################################### DIFFERENTIAL METHYLATION ANALYSIS ##################################
-Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
-save(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.rda")
-write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
-message("Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite done")
-
-Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
-write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
-write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
-write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
-
+##################################################### REORGANIZE ##############################################
+### We need to reorganize because with have a lot of comparison and it's impossible to compare all the conditions togethers
+#
+#
+#                                          ######################################
+#                                          ### Acclimation_1_VS_Acclimation_3 ###
+#                                          ######################################
+#
+#
+############################################ object from processBismarkAln ####################################
+#Acclimation_1_VS_Acclimation_3_processBismarkAln=reorganize(my_meth_acclimation, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			         "Acclimation_1_31_5b",
+#			         "Acclimation_1_31_5c",
+#			         "Acclimation_3_30a",
+#			         "Acclimation_3_30b",
+#			         "Acclimation_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+############################################## object from unite function #####################################
+#Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			   "Acclimation_1_31_5b",
+#			   "Acclimation_1_31_5c",
+#			   "Acclimation_3_30a",
+#			   "Acclimation_3_30b",
+#			   "Acclimation_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+########################################## DIFFERENTIAL METHYLATION ANALYSIS ##################################
+#Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, mc.cores = 4)
+#save(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.rda")
+#write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+#message("Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite done")
+#
+#Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+#write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+#write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+#write.table(Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Acclimation_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+#
+#
+#                                          ######################################
+#                                          ##### Acclimation_1_VS_Control_1 #####
+#                                          ######################################
+#
+#
+############################################ object from processBismarkAln ####################################
+#Acclimation_1_VS_Control_1_processBismarkAln=reorganize(my_meth_acclimation, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			         "Acclimation_1_31_5b",
+#			         "Acclimation_1_31_5c",
+#			         "Control_1_30a",
+#			         "Control_1_30b",
+#			         "Control_1_30c"),
+#	treatment=c(0,0,0,1,1,1))
+############################################## object from unite function #####################################
+#Acclimation_1_VS_Control_1_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			   "Acclimation_1_31_5b",
+#			   "Acclimation_1_31_5c",
+#			   "Control_1_30a",
+#			   "Control_1_30b",
+#			   "Control_1_30c"),
+#	treatment=c(0,0,0,1,1,1))
+########################################## DIFFERENTIAL METHYLATION ANALYSIS ##################################
+#Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Control_1_Allmeth.norm_unite, mc.cores = 4)
+#save(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.rda")
+#write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+#message("Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite done")
+#
+#Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+#write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+#write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+#write.table(Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+#
+#
+#
+#                                          ######################################
+#                                          ##### Acclimation_1_VS_Control_3 #####
+#                                          ######################################
+#
+#
+############################################ object from processBismarkAln ####################################
+#Acclimation_1_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			         "Acclimation_1_31_5b",
+#			         "Acclimation_1_31_5c",
+#			         "Control_3_30a",
+#			         "Control_3_30b",
+#			         "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+############################################## object from unite function #####################################
+#Acclimation_1_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+#	sample.ids=c("Acclimation_1_31_5a",
+#			   "Acclimation_1_31_5b",
+#			   "Acclimation_1_31_5c",
+#			   "Control_3_30a",
+#			   "Control_3_30b",
+#			   "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+########################################## DIFFERENTIAL METHYLATION ANALYSIS ##################################
+#Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_1_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
+#save(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.rda")
+#write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+#message("Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite done")
+#
+#Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+#write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+#write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+#write.table(Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+#
+#
+#
+#                                          ######################################
+#                                          ##### Acclimation_3_VS_Control_3 #####
+#                                          ######################################
+#
+#
+############################################ object from processBismarkAln ####################################
+#Acclimation_3_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
+#	sample.ids=c("Acclimation_3_30a",
+#			         "Acclimation_3_30b",
+#			         "Acclimation_3_30c",
+#			         "Control_3_30a",
+#			         "Control_3_30b",
+#			         "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+############################################## object from unite function #####################################
+#Acclimation_3_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+#	sample.ids=c("Acclimation_3_30a",
+#			   "Acclimation_3_30b",
+#			   "Acclimation_3_30c",
+#			   "Control_3_30a",
+#			   "Control_3_30b",
+#			   "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+########################################## DIFFERENTIAL METHYLATION ANALYSIS ##################################
+#Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_3_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
+#save(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.rda")
+#write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+#message("Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite done")
+#
+#Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+#write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+#write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+#write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+#
+#
+#
+#                                          ######################################
+#                                          ####### Control_1_VS_Control_3 #######
+#                                          ######################################
+#
+#
+############################################ object from processBismarkAln ####################################
+#Control_1_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
+#	sample.ids=c("Control_1_30a",
+#			         "Control_1_30b",
+#			         "Control_1_30c",
+#			         "Control_3_30a",
+#			         "Control_3_30b",
+#			         "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+############################################## object from unite function #####################################
+#Control_1_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+#	sample.ids=c("Control_1_30a",
+#			   "Control_1_30b",
+#			   "Control_1_30c",
+#			   "Control_3_30a",
+#			   "Control_3_30b",
+#			   "Control_3_30c"),
+#	treatment=c(0,0,0,1,1,1))
+########################################## DIFFERENTIAL METHYLATION ANALYSIS ##################################
+#Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Control_1_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
+#save(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.rda")
+#write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+#message("Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite done")
+#
+#Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+#write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+#write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+#
+#Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+#write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+#
 
 
                                           ######################################
@@ -323,83 +405,42 @@ write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hypo
 
 
                                           ######################################
-                                          ####### Control_1_VS_Control_3 #######
+                                          ##### Acclimation_3_VS_Control_1 #####
                                           ######################################
 
 
 ########################################### object from processBismarkAln ####################################
-Control_1_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
-	sample.ids=c("Control_1_30a",
-			         "Control_1_30b",
-			         "Control_1_30c",
-			         "Control_3_30a",
-			         "Control_3_30b",
-			         "Control_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-############################################# object from unite function #####################################
-Control_1_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
-	sample.ids=c("Control_1_30a",
-			   "Control_1_30b",
-			   "Control_1_30c",
-			   "Control_3_30a",
-			   "Control_3_30b",
-			   "Control_3_30c"),
-	treatment=c(0,0,0,1,1,1))
-######################################### DIFFERENTIAL METHYLATION ANALYSIS ##################################
-Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Control_1_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
-save(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.rda")
-write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
-message("Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite done")
-
-Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
-write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
-write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
-
-Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
-write.table(Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Control_1_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
-
-
-
-                                          ######################################
-                                          ##### Acclimation_3_VS_Control_3 #####
-                                          ######################################
-
-
-########################################### object from processBismarkAln ####################################
-Acclimation_3_VS_Control_3_processBismarkAln=reorganize(my_meth_acclimation, 
+Acclimation_3_VS_Control_1_processBismarkAln=reorganize(my_meth_acclimation, 
 	sample.ids=c("Acclimation_3_30a",
 			         "Acclimation_3_30b",
 			         "Acclimation_3_30c",
-			         "Control_3_30a",
-			         "Control_3_30b",
-			         "Control_3_30c"),
+			         "Control_1_30a",
+			         "Control_1_30b",
+			         "Control_1_30c"),
 	treatment=c(0,0,0,1,1,1))
 ############################################# object from unite function #####################################
-Acclimation_3_VS_Control_3_Allmeth.norm_unite=reorganize(Allmeth.norm, 
+Acclimation_3_VS_Control_1_Allmeth.norm_unite=reorganize(Allmeth.norm, 
 	sample.ids=c("Acclimation_3_30a",
 			   "Acclimation_3_30b",
 			   "Acclimation_3_30c",
-			   "Control_3_30a",
-			   "Control_3_30b",
-			   "Control_3_30c"),
+			   "Control_1_30a",
+			   "Control_1_30b",
+			   "Control_1_30c"),
 	treatment=c(0,0,0,1,1,1))
 ######################################### DIFFERENTIAL METHYLATION ANALYSIS ##################################
-Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite=calculateDiffMeth(Acclimation_3_VS_Control_3_Allmeth.norm_unite, mc.cores = 4)
-save(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.rda")
-write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
-message("Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite done")
+Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite=calculateDiffMeth(Acclimation_3_VS_Control_1_Allmeth.norm_unite, mc.cores = 4)
+save(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.rda")
+write.table(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite, file = "Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.txt", sep = "\t", quote = FALSE)
+message("Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite done")
 
-Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
-write.table(
-Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
+Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01)
+write.table(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest, file = "Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest_diff25.q0.001.txt", sep = "\t", quote = FALSE)
 
-Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
-write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
+Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest.hyper=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hyper")
+write.table(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest.hyper, file = "Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hyper.txt", sep = "\t", quote = FALSE)
 
-Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
-write.table(Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_3_VS_Control_3_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
+Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest.hypo=getMethylDiff(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite, difference = 25, qvalue = 0.01, type = "hypo")
+write.table(Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite.interest.hypo, file = "Diffmeth_Acclimation_3_VS_Control_1_Allmeth.norm_unite_diff25.q0.001.hypo.txt", sep = "\t", quote = FALSE)
 
 
 
