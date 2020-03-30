@@ -6,11 +6,15 @@ DATABASE=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/00_custom/Database_ID_ge
 # Creation database "unique" by R:
 # Database_ID_gene_from_BS <- read.table("Database_ID_gene_from_BS.txt", header=T)
 # head(Database_ID_gene_from_BS)
-# for (i in 1:length(unique(Database_ID_gene_from_BS$scaffold))){
+# for (i in 1:length(unique(Database_ID_gene_from_BS$gene_id))){
 #  sink("Database_ID_gene_from_BS_unique.txt", append=TRUE)
-#  print(c(as.character(unique(Database_ID_gene_from_BS$scaffold)[i]), min(unique(Database_ID_gene_from_BS$start)[i]), max(unique(Database_ID_gene_from_BS$stop)[i])))
+#  print(c(as.character(unique(Database_ID_gene_from_BS$scaffold)[i]), 
+#          min(unique(Database_ID_gene_from_BS$start)[i]), 
+#          max(unique(Database_ID_gene_from_BS$stop)[i]),
+#          as.character(unique(Database_ID_gene_from_BS$gene_id)[i])))
 #  sink()
-#  }
+#}
+
 
 cd $DATADIRECTORY
 
