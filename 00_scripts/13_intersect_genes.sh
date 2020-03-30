@@ -19,8 +19,11 @@ for FILE in $(ls $DATADIRECTORY/Diffmeth_*.txt)
 do
 
 awk '{print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8}' ${FILE##*/} > ${FILE##*/}_work_in_progress_01.txt
-sed -i '1d' ${FILE##*/}_work_in_progress_01.txt > ${FILE##*/}_work_in_progress_02.txt
-bedtools intersect -a $DATABASE -b ${FILE##*/}_work_in_progress_02.txt > ${FILE##*/}_work_in_progress_03.txt
-paste ${FILE##*/}_work_in_progress_03.txt ${FILE##*/}_work_in_progress_02.txt > ${FILE##*/}_intersect_genes.txt
+# Need this step in MacOS, not in Linux (don't know why..)
+#sed -i '1d' ${FILE##*/}_work_in_progress_01.txt > ${FILE##*/}_work_in_progress_02.txt
+bedtools intersect -a $DATABASE -b ${FILE##*/}_work_in_progress_01.txt > ${FILE##*/}_work_in_progress_03.txt
+paste ${FILE##*/}_work_in_progress_03.txt ${FILE##*/}_work_in_progress_01.txt > ${FILE##*/}_intersect_genes.txt
+
+rm ${FILE##*/}_work_in_progress_*.txt
 
 done;
