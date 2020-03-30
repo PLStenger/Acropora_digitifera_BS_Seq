@@ -14,6 +14,7 @@
     nohup bash 10_flagstat.sh &> 10_flagstat.out &
     nohup bash 11_index_bam.sh &> 11_index_bam.out &
     nohup bash 12_methylkit_CpG_calling.sh &> 12_methylkit_CpG_calling.out &
+    nohup bash 13_intersect_genes.sh &> 13_intersect_genes.out &
 
     
 ## Check it
