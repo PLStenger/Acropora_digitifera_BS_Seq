@@ -3,6 +3,15 @@
 DATADIRECTORY=/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark
 DATABASE=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/00_custom/Database_ID_gene_from_BS_unique.txt
 
+# Creation database "unique" by R:
+# Database_ID_gene_from_BS <- read.table("Database_ID_gene_from_BS.txt", header=T)
+# head(Database_ID_gene_from_BS)
+# for (i in 1:length(unique(Database_ID_gene_from_BS$scaffold))){
+#  sink("Database_ID_gene_from_BS_unique.txt", append=TRUE)
+#  print(c(as.character(unique(Database_ID_gene_from_BS$scaffold)[i]), min(unique(Database_ID_gene_from_BS$start)[i]), max(unique(Database_ID_gene_from_BS$stop)[i])))
+#  sink()
+#  }
+
 cd $DATADIRECTORY
 
 for FILE in $(ls $DATADIRECTORY/Diffmeth_*.txt)
