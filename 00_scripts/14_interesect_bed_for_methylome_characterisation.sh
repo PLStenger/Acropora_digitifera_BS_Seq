@@ -2,6 +2,8 @@
 
 DATADIRECTORY=/home/stenger/stenger_data/EPIGENETIC_DATA/06_02_bismark_extractor
 
+cd $DATADIRECTORY
+
 for FILE in $(ls $DATADIRECTORY/*paired_bismark_bt2_pe.deduplicated.bed)
 
 do
