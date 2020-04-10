@@ -17,5 +17,7 @@ cd $DATADIRECTORY
 #bamCoverage -b Control_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam -o Control_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw
 #bamCoverage -b Control_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam -o Control_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw
 
+computeMatrix scale-regions -S Acclimation_1_31_5a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Acclimation_1_31_5c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Acclimation_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_1_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_1_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_1_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw Control_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw -R scaffold_gene_lenght_02.bed  --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o all_individual_matrix.mat.gz
 
+plotProfile -m all_individual_matrix.mat.gz -out all_individual.pdf --plotTitle "all_individual" --plotHeight 10 --plotWidth 10
 
