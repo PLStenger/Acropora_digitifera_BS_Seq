@@ -16,7 +16,7 @@
     nohup bash 12_methylkit_CpG_calling.sh &> 12_methylkit_CpG_calling.out &
     nohup bash 13_intersect_genes.sh &> 13_intersect_genes.out &
     nohup bash 14_interesect_bed_for_methylome_characterisation.sh &> 14_interesect_bed_for_methylome_characterisation.out &
-    nohup bash 15_deepTools.sh &> 15_deepTools.out &
+    nohup bash 15_deepTools_bam_coverage.sh &> 15_deepTools_bam_coverage.out &
     nohup bash 16_01_compute_matrix.sh &> 16_01_compute_matrix.out &
     nohup bash 16_02_compute_matrix.sh &> 16_02_compute_matrix.out &
     nohup bash 16_03_compute_matrix.sh &> 16_03_compute_matrix.out &
