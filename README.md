@@ -17,6 +17,19 @@
     nohup bash 13_intersect_genes.sh &> 13_intersect_genes.out &
     nohup bash 14_interesect_bed_for_methylome_characterisation.sh &> 14_interesect_bed_for_methylome_characterisation.out &
     nohup bash 15_deepTools.sh &> 15_deepTools.out &
+    nohup bash 16_01_compute_matrix.sh &> 16_01_compute_matrix.out &
+    nohup bash 16_02_compute_matrix.sh &> 16_02_compute_matrix.out &
+    nohup bash 16_03_compute_matrix.sh &> 16_03_compute_matrix.out &
+    nohup bash 16_04_compute_matrix.sh &> 16_04_compute_matrix.out &
+    nohup bash 16_05_compute_matrix.sh &> 16_05_compute_matrix.out &
+    nohup bash 16_06_compute_matrix.sh &> 16_06_compute_matrix.out &
+    nohup bash 16_07_compute_matrix.sh &> 16_07_compute_matrix.out &
+    nohup bash 16_08_compute_matrix.sh &> 16_08_compute_matrix.out &
+    nohup bash 16_09_compute_matrix.sh &> 16_09_compute_matrix.out &
+    nohup bash 16_10_compute_matrix.sh &> 16_10_compute_matrix.out &
+    nohup bash 16_11_compute_matrix.sh &> 16_11_compute_matrix.out &
+    nohup bash 16_12_compute_matrix.sh &> 16_12_compute_matrix.out &
+
     
 ## Check it
     ps aux | grep stenger
