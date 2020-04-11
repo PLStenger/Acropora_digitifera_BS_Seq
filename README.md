@@ -29,11 +29,11 @@
     nohup bash 16_10_compute_matrix.sh &> 16_10_compute_matrix.out &
     nohup bash 16_11_compute_matrix.sh &> 16_11_compute_matrix.out &
     nohup bash 16_12_compute_matrix.sh &> 16_12_compute_matrix.out &
+    nohup bash 17_WGCNA_on_RNA_Seq.sh &> 17_WGCNA_on_RNA_Seq.out &
 
-    
+
 ## Check it
     ps aux | grep stenger
 
 ## kill it
     kill XxXxNumberXxXx
-
