@@ -22,209 +22,209 @@ setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/08_RNA_Seq_link")
 # The following setting is important, do not omit.
 options(stringsAsFactors=FALSE)
 
-#Read in the expr data set, from HT-Seq count 
-# https://labs.genetics.ucla.edu/horvath/htdocs/CoexpressionNetwork/Rpackages/WGCNA/faq.html
-# We then recommend a variance-stabilizing transformation. For example, 
-# package DESeq2 implements the function varianceStabilizingTransformation which we have found useful, 
-# but one could also start with normalized counts (or RPKM/FPKM data) and log-transform them using log2(x+1). 
-# For highly expressed features, the differences between full variance stabilization and a simple log transformation are small.
-
-# If using Excel, the formalua is : =LOG(B2+1; 2)
-
-## Bash script in local
+##Read in the expr data set, from HT-Seq count 
+## https://labs.genetics.ucla.edu/horvath/htdocs/CoexpressionNetwork/Rpackages/WGCNA/faq.html
+## We then recommend a variance-stabilizing transformation. For example, 
+## package DESeq2 implements the function varianceStabilizingTransformation which we have found useful, 
+## but one could also start with normalized counts (or RPKM/FPKM data) and log-transform them using log2(x+1). 
+## For highly expressed features, the differences between full variance stabilization and a simple log transformation are small.
 #
-#awk '{print $2}'       count_Control_1_30a.txt >       count_Control_1_30a_col.txt
-#awk '{print $2}'       count_Control_1_30b.txt >       count_Control_1_30b_col.txt
-#awk '{print $2}'       count_Control_1_30c.txt >       count_Control_1_30c_col.txt
-#awk '{print $2}'       count_Control_2_35a.txt >       count_Control_2_35a_col.txt
-#awk '{print $2}'       count_Control_2_35b.txt >       count_Control_2_35b_col.txt
-#awk '{print $2}'       count_Control_2_35c.txt >       count_Control_2_35c_col.txt
-#awk '{print $2}'       count_Control_3_30a.txt >       count_Control_3_30a_col.txt
-#awk '{print $2}'       count_Control_3_30b.txt >       count_Control_3_30b_col.txt
-#awk '{print $2}'       count_Control_3_30c.txt >       count_Control_3_30c_col.txt
-#awk '{print $2}' count_Acclimation_1_31_5a.txt > count_Acclimation_1_31_5a_col.txt
-#awk '{print $2}' count_Acclimation_1_31_5b.txt > count_Acclimation_1_31_5b_col.txt
-#awk '{print $2}' count_Acclimation_1_31_5c.txt > count_Acclimation_1_31_5c_col.txt
-#awk '{print $2}'   count_Acclimation_2_35a.txt >   count_Acclimation_2_35a_col.txt
-#awk '{print $2}'   count_Acclimation_2_35b.txt >   count_Acclimation_2_35b_col.txt
-#awk '{print $2}'   count_Acclimation_2_35c.txt >   count_Acclimation_2_35c_col.txt
-#awk '{print $2}'   count_Acclimation_3_30a.txt >   count_Acclimation_3_30a_col.txt
-#awk '{print $2}'   count_Acclimation_3_30b.txt >   count_Acclimation_3_30b_col.txt
-#awk '{print $2}'   count_Acclimation_3_30c.txt >   count_Acclimation_3_30c_col.txt
+## If using Excel, the formalua is : =LOG(B2+1; 2)
 #
-#awk '{print $1}'       count_Control_1_30a.txt >       names_genes_col.txt
+### Bash script in local
+##
+##awk '{print $2}'       count_Control_1_30a.txt >       count_Control_1_30a_col.txt
+##awk '{print $2}'       count_Control_1_30b.txt >       count_Control_1_30b_col.txt
+##awk '{print $2}'       count_Control_1_30c.txt >       count_Control_1_30c_col.txt
+##awk '{print $2}'       count_Control_2_35a.txt >       count_Control_2_35a_col.txt
+##awk '{print $2}'       count_Control_2_35b.txt >       count_Control_2_35b_col.txt
+##awk '{print $2}'       count_Control_2_35c.txt >       count_Control_2_35c_col.txt
+##awk '{print $2}'       count_Control_3_30a.txt >       count_Control_3_30a_col.txt
+##awk '{print $2}'       count_Control_3_30b.txt >       count_Control_3_30b_col.txt
+##awk '{print $2}'       count_Control_3_30c.txt >       count_Control_3_30c_col.txt
+##awk '{print $2}' count_Acclimation_1_31_5a.txt > count_Acclimation_1_31_5a_col.txt
+##awk '{print $2}' count_Acclimation_1_31_5b.txt > count_Acclimation_1_31_5b_col.txt
+##awk '{print $2}' count_Acclimation_1_31_5c.txt > count_Acclimation_1_31_5c_col.txt
+##awk '{print $2}'   count_Acclimation_2_35a.txt >   count_Acclimation_2_35a_col.txt
+##awk '{print $2}'   count_Acclimation_2_35b.txt >   count_Acclimation_2_35b_col.txt
+##awk '{print $2}'   count_Acclimation_2_35c.txt >   count_Acclimation_2_35c_col.txt
+##awk '{print $2}'   count_Acclimation_3_30a.txt >   count_Acclimation_3_30a_col.txt
+##awk '{print $2}'   count_Acclimation_3_30b.txt >   count_Acclimation_3_30b_col.txt
+##awk '{print $2}'   count_Acclimation_3_30c.txt >   count_Acclimation_3_30c_col.txt
+##
+##awk '{print $1}'       count_Control_1_30a.txt >       names_genes_col.txt
+##
+##paste names_genes_col.txt count_Control_1_30a_col.txt count_Control_1_30b_col.txt count_Control_1_30c_col.txt count_Control_2_35a_col.txt count_Control_2_35b_col.txt count_Control_2_35c_col.txt count_Control_3_30a_col.txt count_Control_3_30b_col.txt count_Control_3_30c_col.txt count_Acclimation_1_31_5a_col.txt count_Acclimation_1_31_5b_col.txt count_Acclimation_1_31_5c_col.txt count_Acclimation_2_35a_col.txt count_Acclimation_2_35b_col.txt count_Acclimation_2_35c_col.txt count_Acclimation_3_30a_col.txt count_Acclimation_3_30b_col.txt count_Acclimation_3_30c_col.txt > all_count.txt
+##
+##sed -i '1s/^/Genes Control_1_30a Control_1_30b Control_1_30c Control_2_35a Control_2_35b Control_2_35c Control_3_30a Control_3_30b Control_3_30c Acclimation_1_31_5a Acclimation_1_31_5b Acclimation_1_31_5c Acclimation_2_35a Acclimation_2_35b Acclimation_2_35c Acclimation_3_30a Acclimation_3_30b Acclimation_3_30c\n/' all_count.txt 
+##
+### header:
+### Genes	Control_1_30a	Control_1_30b	Control_1_30c	Control_2_35a	Control_2_35b	Control_2_35c	Control_3_30a	Control_3_30b	Control_3_30c	Acclimation_1_31_5a	Acclimation_1_31_5b	Acclimation_1_31_5c	Acclimation_2_35a	Acclimation_2_35b	Acclimation_2_35c	Acclimation_3_30a	Acclimation_3_30b	Acclimation_3_30c
 #
-#paste names_genes_col.txt count_Control_1_30a_col.txt count_Control_1_30b_col.txt count_Control_1_30c_col.txt count_Control_2_35a_col.txt count_Control_2_35b_col.txt count_Control_2_35c_col.txt count_Control_3_30a_col.txt count_Control_3_30b_col.txt count_Control_3_30c_col.txt count_Acclimation_1_31_5a_col.txt count_Acclimation_1_31_5b_col.txt count_Acclimation_1_31_5c_col.txt count_Acclimation_2_35a_col.txt count_Acclimation_2_35b_col.txt count_Acclimation_2_35c_col.txt count_Acclimation_3_30a_col.txt count_Acclimation_3_30b_col.txt count_Acclimation_3_30c_col.txt > all_count.txt
 #
-#sed -i '1s/^/Genes Control_1_30a Control_1_30b Control_1_30c Control_2_35a Control_2_35b Control_2_35c Control_3_30a Control_3_30b Control_3_30c Acclimation_1_31_5a Acclimation_1_31_5b Acclimation_1_31_5c Acclimation_2_35a Acclimation_2_35b Acclimation_2_35c Acclimation_3_30a Acclimation_3_30b Acclimation_3_30c\n/' all_count.txt 
+## And then in excel:
+## =LOG(B2+1; 2)
 #
-## header:
-## Genes	Control_1_30a	Control_1_30b	Control_1_30c	Control_2_35a	Control_2_35b	Control_2_35c	Control_3_30a	Control_3_30b	Control_3_30c	Acclimation_1_31_5a	Acclimation_1_31_5b	Acclimation_1_31_5c	Acclimation_2_35a	Acclimation_2_35b	Acclimation_2_35c	Acclimation_3_30a	Acclimation_3_30b	Acclimation_3_30c
+#logcpm_test<-read.table("logcpm.txt", header=T)
+## Take a quick look at what is in the data set:
+#dim(logcpm_test)
+#head(logcpm_test)
+#
+#
+## We first check for genes and samples with too many missing values
+#datExpr0 = as.data.frame(t(logcpm_test))
+#gsg = goodSamplesGenes(datExpr0, verbose = 3);
+#gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
+#
+## If not, we remove the offending genes and samples from the data :
+#if (!gsg$allOK)
+#{
+#  # Optionally, print the gene and sample names that were removed:
+#  if (sum(!gsg$goodGenes)>0) 
+#    printFlush(paste("Removing genes:", paste(names(datExpr0)[!gsg$goodGenes], collapse = ", ")));
+#  if (sum(!gsg$goodSamples)>0) 
+#    printFlush(paste("Removing samples:", paste(rownames(datExpr0)[!gsg$goodSamples], collapse = ", ")));
+#  # Remove the offending genes and samples from the data:
+#  datExpr0 = datExpr0[gsg$goodSamples, gsg$goodGenes]
+#}
+#
+#
+#
+## Next we cluster the samples (in contrast to clustering genes that will come later) to see if there are any obvious outliers.
+#sampleTree = hclust(dist(datExpr0), method = "average");
+## Plot the sample tree: Open a graphic output window of size 12 by 9 inches
+## The user should change the dimensions if the window is too large or too small.
+#sizeGrWindow(12,9)
+##pdf(file = "Plots/sampleClustering.pdf", width = 12, height = 9);
+#par(cex = 0.6);
+#par(mar = c(0,4,2,0))
+#plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="", cex.lab = 1.5, 
+#     cex.axis = 1.5, cex.main = 2)
+#
+#plot(sampleTree, main = "Sample clustering", sub="", xlab="", cex.lab = 1.5, 
+#     cex.axis = 1.5, cex.main = 2)
+#
+#
+#
+#
+#
+#
+## Plot a line to show the cut
+#abline(h = 400, col = "red");
+## Determine cluster under the line
+#clust = cutreeStatic(sampleTree, cutHeight = 400, minSize = 10)
+#table(clust)
+## clust 1 contains the samples we want to keep.
+#keepSamples = (clust==1)
+#datExpr = datExpr0[keepSamples, ]
+#nGenes = ncol(datExpr)
+#nSamples = nrow(datExpr)
+#
+#variancedatExpr=as.vector(apply(as.matrix(datExpr),2,var, na.rm=T))
+#no.presentdatExpr=as.vector(apply(!is.na(as.matrix(datExpr)),2, sum) )
+## Another way of summarizing the number of pressent entries 
+#table(no.presentdatExpr)
+#
+## Keep only genes whose variance is non-zero and have at least 4 present entries
+#KeepGenes= variancedatExpr>0.05
+#table(KeepGenes)
+#datExpr=datExpr[, KeepGenes]
+##View(datExpr)
+#name_datExpr <-colnames(datExpr)
+#head(name_datExpr)
+#
+#
+#
+#
+#allTraits = read.table("trait.txt", header=T);
+#names(allTraits)
+#
+## Form a data frame analogous to expression data that will hold the clinical traits.
+#
+#temp = rownames(datExpr);
+#traitRows = match(temp, allTraits$Ind);
+#datTraits = allTraits[traitRows, -1];
+#rownames(datTraits) = allTraits[traitRows, 1];
+#str(datTraits)
+#
+#collectGarbage();
+#
+#
+## Re-cluster samples
+#sampleTree2 = hclust(dist(datExpr), method = "average")
+## Convert traits to a color representation: white means low, red means high, grey means missing entry
+#traitColors = numbers2colors(datTraits,signed= FALSE);
+## Plot the sample dendrogram and the colors underneath.
+#pdf("dendo_heatmap.pdf",width=12,height=9)
+#par(mar=c(1, 10, 1, 1))
+#plotDendroAndColors(sampleTree2, traitColors,
+#                    groupLabels = names(datTraits), 
+#                    main = "Sample dendrogram and trait heatmap")
+#
+#dev.off()
+#
+#
+#save(datExpr, datTraits, file = "dataInput_subset.Rda")
+#
+#
+########################### Module construction step-by-step #################################
+#
+#
+#
+##setting is important, do not omit.
+#options(stringsAsFactors = FALSE);
+## Allow multi-threading within WGCNA. At present this call is necessary.
+## Any error here may be ignored but you may want to update WGCNA if you see one.
+## Caution: skip this line if you run RStudio or other third-party R environments.
+## See note above.
+##enableWGCNAThreads()
+## Load the data saved in the first part
+#lnames = load(file = "dataInput_subset.Rda");
+##The variable lnames contains the names of loaded variables.
+#lnames
+#
+## Very important for sft !!
+#allowWGCNAThreads() 
+#
+#load(file = "dataInput_subset.Rda")
+## Choose a set of soft-thresholding powers
+#powers = c(c(1:10), seq(from = 10, to=24, by=2))
+## Call the network topology analysis function
+#sft = pickSoftThreshold(datExpr, powerVector = powers, verbose = 5,networkType="signed")
+## Plot the results:
+#sizeGrWindow(9, 5)
+#par(mfrow = c(1,2));
+#cex1 = 0.9;
+## Scale-free topology fit index as a function of the soft-thresholding power
+#plot(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
+#     xlab="Soft Threshold (power)",ylab="Scale Free Topology Model Fit,signed R^2",type="n",
+#     main = paste("Scale independence"));
+#text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
+#     labels=powers,cex=cex1,col="red");
+## this line corresponds to using an R^2 cut-off of h
+#abline(h=0.84,col="red") 
+## Mean connectivity as a function of the soft-thresholding power
+#plot(sft$fitIndices[,1], sft$fitIndices[,5],
+#     xlab="Soft Threshold (power)",ylab="Mean Connectivity", type="n",
+#     main = paste("Mean connectivity"))
+#text(sft$fitIndices[,1], sft$fitIndices[,5], labels=powers, cex=cex1,col="red")
+#save(sft,file="sft_signed.Rda")
+#View(sft$fitIndices)
 
+#pickSoftThreshold(
+#  datExpr, 
+#  dataIsExpr = TRUE,
+#  weights = NULL,
+#  RsquaredCut = 0.85, 
+#  powerVector = c(seq(1, 10, by = 1), seq(12, 20, by = 2)), 
+#  removeFirst = FALSE, nBreaks = 10, blockSize = NULL, 
+#  corFnc = cor, corOptions = list(use = 'p'), 
+#  networkType = "unsigned",
+#  moreNetworkConcepts = FALSE,
+#  gcInterval = NULL,
+#  verbose = 0, indent = 0)
 
-# And then in excel:
-# =LOG(B2+1; 2)
-
-logcpm_test<-read.table("logcpm.txt", header=T)
-# Take a quick look at what is in the data set:
-dim(logcpm_test)
-head(logcpm_test)
-
-
-# We first check for genes and samples with too many missing values
-datExpr0 = as.data.frame(t(logcpm_test))
-gsg = goodSamplesGenes(datExpr0, verbose = 3);
-gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
-
-# If not, we remove the offending genes and samples from the data :
-if (!gsg$allOK)
-{
-  # Optionally, print the gene and sample names that were removed:
-  if (sum(!gsg$goodGenes)>0) 
-    printFlush(paste("Removing genes:", paste(names(datExpr0)[!gsg$goodGenes], collapse = ", ")));
-  if (sum(!gsg$goodSamples)>0) 
-    printFlush(paste("Removing samples:", paste(rownames(datExpr0)[!gsg$goodSamples], collapse = ", ")));
-  # Remove the offending genes and samples from the data:
-  datExpr0 = datExpr0[gsg$goodSamples, gsg$goodGenes]
-}
-
-
-
-# Next we cluster the samples (in contrast to clustering genes that will come later) to see if there are any obvious outliers.
-sampleTree = hclust(dist(datExpr0), method = "average");
-# Plot the sample tree: Open a graphic output window of size 12 by 9 inches
-# The user should change the dimensions if the window is too large or too small.
-sizeGrWindow(12,9)
-#pdf(file = "Plots/sampleClustering.pdf", width = 12, height = 9);
-par(cex = 0.6);
-par(mar = c(0,4,2,0))
-plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="", cex.lab = 1.5, 
-     cex.axis = 1.5, cex.main = 2)
-
-plot(sampleTree, main = "Sample clustering", sub="", xlab="", cex.lab = 1.5, 
-     cex.axis = 1.5, cex.main = 2)
-
-
-
-
-
-
-# Plot a line to show the cut
-abline(h = 400, col = "red");
-# Determine cluster under the line
-clust = cutreeStatic(sampleTree, cutHeight = 400, minSize = 10)
-table(clust)
-# clust 1 contains the samples we want to keep.
-keepSamples = (clust==1)
-datExpr = datExpr0[keepSamples, ]
-nGenes = ncol(datExpr)
-nSamples = nrow(datExpr)
-
-variancedatExpr=as.vector(apply(as.matrix(datExpr),2,var, na.rm=T))
-no.presentdatExpr=as.vector(apply(!is.na(as.matrix(datExpr)),2, sum) )
-# Another way of summarizing the number of pressent entries 
-table(no.presentdatExpr)
-
-# Keep only genes whose variance is non-zero and have at least 4 present entries
-KeepGenes= variancedatExpr>0.05
-table(KeepGenes)
-datExpr=datExpr[, KeepGenes]
-#View(datExpr)
-name_datExpr <-colnames(datExpr)
-head(name_datExpr)
-
-
-
-
-allTraits = read.table("trait.txt", header=T);
-names(allTraits)
-
-# Form a data frame analogous to expression data that will hold the clinical traits.
-
-temp = rownames(datExpr);
-traitRows = match(temp, allTraits$Ind);
-datTraits = allTraits[traitRows, -1];
-rownames(datTraits) = allTraits[traitRows, 1];
-str(datTraits)
-
-collectGarbage();
-
-
-# Re-cluster samples
-sampleTree2 = hclust(dist(datExpr), method = "average")
-# Convert traits to a color representation: white means low, red means high, grey means missing entry
-traitColors = numbers2colors(datTraits,signed= FALSE);
-# Plot the sample dendrogram and the colors underneath.
-pdf("dendo_heatmap_subset.noalbinos.pdf",width=12,height=9)
-par(mar=c(1, 10, 1, 1))
-plotDendroAndColors(sampleTree2, traitColors,
-                    groupLabels = names(datTraits), 
-                    main = "Sample dendrogram and trait heatmap")
-
-dev.off()
-
-
-save(datExpr, datTraits, file = "dataInput_subset.Rda")
-
-
-########################## Module construction step-by-step #################################
-
-
-
-#setting is important, do not omit.
-options(stringsAsFactors = FALSE);
-# Allow multi-threading within WGCNA. At present this call is necessary.
-# Any error here may be ignored but you may want to update WGCNA if you see one.
-# Caution: skip this line if you run RStudio or other third-party R environments.
-# See note above.
-#enableWGCNAThreads()
-# Load the data saved in the first part
-lnames = load(file = "dataInput_subset.Rda");
-#The variable lnames contains the names of loaded variables.
-lnames
-
-# Very important for sft !!
-allowWGCNAThreads() 
-
-load(file = "dataInput_subset.Rda")
-# Choose a set of soft-thresholding powers
-powers = c(c(1:10), seq(from = 10, to=24, by=2))
-# Call the network topology analysis function
-sft = pickSoftThreshold(datExpr, powerVector = powers, verbose = 5,networkType="signed")
-# Plot the results:
-sizeGrWindow(9, 5)
-par(mfrow = c(1,2));
-cex1 = 0.9;
-# Scale-free topology fit index as a function of the soft-thresholding power
-plot(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-     xlab="Soft Threshold (power)",ylab="Scale Free Topology Model Fit,signed R^2",type="n",
-     main = paste("Scale independence"));
-text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2],
-     labels=powers,cex=cex1,col="red");
-# this line corresponds to using an R^2 cut-off of h
-abline(h=0.84,col="red") 
-# Mean connectivity as a function of the soft-thresholding power
-plot(sft$fitIndices[,1], sft$fitIndices[,5],
-     xlab="Soft Threshold (power)",ylab="Mean Connectivity", type="n",
-     main = paste("Mean connectivity"))
-text(sft$fitIndices[,1], sft$fitIndices[,5], labels=powers, cex=cex1,col="red")
-save(sft,file="sft_signed.Rda")
-View(sft$fitIndices)
-
-pickSoftThreshold(
-  datExpr, 
-  dataIsExpr = TRUE,
-  weights = NULL,
-  RsquaredCut = 0.85, 
-  powerVector = c(seq(1, 10, by = 1), seq(12, 20, by = 2)), 
-  removeFirst = FALSE, nBreaks = 10, blockSize = NULL, 
-  corFnc = cor, corOptions = list(use = 'p'), 
-  networkType = "unsigned",
-  moreNetworkConcepts = FALSE,
-  gcInterval = NULL,
-  verbose = 0, indent = 0)
-
-softPower = 20; #reached 90 R2 # Here 20 = 0.80237680
+#softPower = 20; #reached 90 R2 # Here 20 = 0.80237680
 # Error in cor_mat^power : non-numeric argument to binary operator
 #adjacency = adjacency(datExpr, power = "softPower", type="signed"); # Error in cor_mat^power : non-numeric argument to binary operator
 
@@ -234,6 +234,10 @@ softPower = 20; #reached 90 R2 # Here 20 = 0.80237680
 
 #####################
 # making modules
+
+load(file = "dataInput_subset.Rda")
+load(file = "sft_signed.Rda")
+
 
 #s.th=18 # re-specify according to previous section
 s.th=20 # re-specify according to previous section
