@@ -30,6 +30,7 @@
     nohup bash 16_11_compute_matrix.sh &> 16_11_compute_matrix.out &
     nohup bash 16_12_compute_matrix.sh &> 16_12_compute_matrix.out &
     nohup bash 17_WGCNA_on_RNA_Seq.sh &> 17_WGCNA_on_RNA_Seq.out &
+    nohup bash 16_13_computeMatrixOperations.sh &> 16_13_computeMatrixOperations.out &
 
 
 ## Check it
