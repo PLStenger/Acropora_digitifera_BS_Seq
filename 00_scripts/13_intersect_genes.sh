@@ -25,13 +25,32 @@ DATABASE=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/00_custom/Database_ID_ge
 #}
 
 
+#cd $DATADIRECTORY
+#
+#rm *txt_intersect_genes*
+#rm *work_in_progress*
+#
+#
+#for FILE in $(ls $DATADIRECTORY/*diff25*)
+#
+#do
+#
+#awk '{print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8}' ${FILE##*/} > ${FILE##*/}_work_in_progress_01.txt
+#sed -i '1d' ${FILE##*/}_work_in_progress_01.txt
+#bedtools intersect -a ${FILE##*/}_work_in_progress_01.txt -b $DATABASE -loj > ${FILE##*/}_intersect_genes.txt
+#sed -i '1s/^/chr	start	end	strand	pvalue	qvalue	meth.diff	scaffold	start	end	gene\n/' ${FILE##*/}_intersect_genes.txt
+#rm ${FILE##*/}_work_in_progress_*.txt
+#
+#done;
+
+
 cd $DATADIRECTORY
 
 rm *txt_intersect_genes*
 rm *work_in_progress*
 
 
-for FILE in $(ls $DATADIRECTORY/*diff25*)
+for FILE in $(ls $DATADIRECTORY/*diff20*)
 
 do
 
