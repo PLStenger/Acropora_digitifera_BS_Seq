@@ -8,7 +8,7 @@ SCRIPT_FOLDER=/home/stenger/stenger_data/EPIGENETIC_DATA/Acropora_digitifera_BS_
 cd $DATADIRECTORY
 
 
-SCRIPT_R=/home/stenger/stenger_data/EPIGENETIC_DATA/Acropora_digitifera_BS_Seq/00_scripts/12_methylkit_CpG_calling.R
+SCRIPT_R=/home/stenger/stenger_data/EPIGENETIC_DATA/Acropora_digitifera_BS_Seq/00_scripts/12_methylkit_CpG_calling_diff20_qval0_05.R
 
-Rscript --vanilla $SCRIPT_R > ${SCRIPT_FOLDER}/12_methylkit_CpG_calling.out
+Rscript --vanilla $SCRIPT_R > ${SCRIPT_FOLDER}/12_methylkit_CpG_calling_diff20_qval0_05.out
 
