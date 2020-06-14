@@ -12,6 +12,6 @@ cd $DATADIRECTORY
 #plotHeatmap -m rbind_output.mat.gz -out heatmap_rbind_output.mat.pdf
 
 computeMatrixOperations cbind -m FC_A1vsA3_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz FC_A1vsC3_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz FC_C1vsA1_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz FC_A1vsA3_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz FC_C1vsA3_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz FC_C3vsA3_up_Acclimation_1_31_5b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Up_Acclimation_1_31_5b_cbind_output.mat.gz
-plotHeatmap -m Up_Acclimation_1_31_5b_cbind_output.mat.gz -out Up_Acclimation_1_31_5b_heatmap_cbind_output.mat.pdf
+#plotHeatmap -m Up_Acclimation_1_31_5b_cbind_output.mat.gz -out Up_Acclimation_1_31_5b_heatmap_cbind_output.mat.pdf
 
 
