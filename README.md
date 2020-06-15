@@ -21,7 +21,7 @@
     nohup bash 16_02_compute_matrix_A_1_31_5c.sh &> 16_02_compute_matrix_A_1_31_5c.out &
     nohup bash 16_03_compute_matrix_A_3_30a.sh &> 16_03_compute_matrix_A_3_30a.out &
     nohup bash 16_04_compute_matrix_C_3_30c.sh &> 16_04_compute_matrix_C_3_30c.out &
-    nohup bash 16_05_compute_matrix_C_3_30b.sh &> 16_05_compute_matrix_C_3_30b.out &
+    nohup bash 16_05_compute_matrix_C_1_30b.sh &> 16_05_compute_matrix_C_1_30b.out &
     nohup bash 16_06_compute_matrix_A_3_30c.sh &> 16_06_compute_matrix_A_3_30c.out &
     nohup bash 16_07_compute_matrix_C_3_30a.sh &> 16_07_compute_matrix_C_3_30a.out &
     nohup bash 16_08_compute_matrix_C_3_30b.sh &> 16_08_compute_matrix_C_3_30b.out &
