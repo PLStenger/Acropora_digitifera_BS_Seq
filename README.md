@@ -39,3 +39,19 @@
 
 ## kill it
     kill XxXxNumberXxXx
+    
+    
+## Quick tricks
+
+Obtain count, min and max for each unique entry, useful for obtainning genes lengths from only an exon database:
+
+    awk '{
+      count[$1]++
+      min[$1]=(!($1 in min) || $2<min[$1]) ? $2 : min[$1]
+      max[$1]=(!($1 in max) || $2>max[$1]) ? $2 : max[$1]
+    }
+    END {
+      print "Name","Count","Minimum","Maximum"
+      print "----","-----","-------","-------"
+      for(i in count) print i,count[i],min[i],max[i]
+    }' input_file > output_file | column -t
