@@ -17,18 +17,18 @@
     nohup bash 13_intersect_genes.sh &> 13_intersect_genes.out &
     nohup bash 14_interesect_bed_for_methylome_characterisation.sh &> 14_interesect_bed_for_methylome_characterisation.out &
     nohup bash 15_deepTools_bam_coverage.sh &> 15_deepTools_bam_coverage.out &
-    nohup bash 16_01_compute_matrix.sh &> 16_01_compute_matrix.out &
-    nohup bash 16_02_compute_matrix.sh &> 16_02_compute_matrix.out &
-    nohup bash 16_03_compute_matrix.sh &> 16_03_compute_matrix.out &
-    nohup bash 16_04_compute_matrix.sh &> 16_04_compute_matrix.out &
-    nohup bash 16_05_compute_matrix.sh &> 16_05_compute_matrix.out &
-    nohup bash 16_06_compute_matrix.sh &> 16_06_compute_matrix.out &
-    nohup bash 16_07_compute_matrix.sh &> 16_07_compute_matrix.out &
-    nohup bash 16_08_compute_matrix.sh &> 16_08_compute_matrix.out &
-    nohup bash 16_09_compute_matrix.sh &> 16_09_compute_matrix.out &
-    nohup bash 16_10_compute_matrix.sh &> 16_10_compute_matrix.out &
-    nohup bash 16_11_compute_matrix.sh &> 16_11_compute_matrix.out &
-    nohup bash 16_12_compute_matrix.sh &> 16_12_compute_matrix.out &
+    nohup bash 16_01_compute_matrix_A_1_31_5b.sh &> 16_01_compute_matrix_A_1_31_5b.out &
+    nohup bash 16_02_compute_matrix_A_1_31_5c.sh &> 16_02_compute_matrix_A_1_31_5c.out &
+    nohup bash 16_03_compute_matrix_A_3_30a.sh &> 16_03_compute_matrix_A_3_30a.out &
+    nohup bash 16_04_compute_matrix_C_3_30c.sh &> 16_04_compute_matrix_C_3_30c.out &
+    nohup bash 16_05_compute_matrix_C_3_30b.sh &> 16_05_compute_matrix_C_3_30b.out &
+    nohup bash 16_06_compute_matrix_A_3_30c.sh &> 16_06_compute_matrix_A_3_30c.out &
+    nohup bash 16_07_compute_matrix_C_3_30a.sh &> 16_07_compute_matrix_C_3_30a.out &
+    nohup bash 16_08_compute_matrix_C_3_30b.sh &> 16_08_compute_matrix_C_3_30b.out &
+    nohup bash 16_09_compute_matrix_C_1_30a.sh &> 16_09_compute_matrix_C_1_30a.out &
+    nohup bash 16_10_compute_matrix_C_1_30c.sh &> 16_10_compute_matrix_C_1_30c.out &
+    nohup bash 16_11_compute_matrix_A_1_31_5a.sh &> 16_11_compute_matrix_A_1_31_5a.out &
+    nohup bash 16_12_compute_matrix_A_3_30b.sh &> 16_12_compute_matrix_A_3_30b.out &
     nohup bash 16_13_computeMatrixOperations.sh &> 16_13_computeMatrixOperations.out &
     nohup bash 17_WGCNA_on_RNA_Seq.sh &> 17_WGCNA_on_RNA_Seq.out &
     nohup bash 18_GBM_calculation.sh &> 18_GBM_calculation.out &
