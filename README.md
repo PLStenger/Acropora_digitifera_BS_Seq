@@ -48,7 +48,7 @@ Obtain count, min and max for each unique entry, useful for obtainning genes len
     awk '{
       count[$1]++
       min[$1]=(!($1 in min) || $2<min[$1]) ? $2 : min[$1]
-      max[$1]=(!($1 in max) || $2>max[$1]) ? $2 : max[$1]
+      max[$1]=(!($1 in max) || $3>max[$1]) ? $3 : max[$1]
     }
     END {
       print "Name","Count","Minimum","Maximum"
