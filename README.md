@@ -33,6 +33,7 @@
     nohup bash 17_WGCNA_on_RNA_Seq.sh &> 17_WGCNA_on_RNA_Seq.out &
     nohup bash 18_GBM_calculation.sh &> 18_GBM_calculation.out &
     nohup bash 16_14_DeepTools_selected_genes.sh &> 16_14_DeepTools_selected_genes.out &
+    nohup bash 16_15_DeepTools_A1vsC1.sh &> 16_15_DeepTools_A1vsC1.out &
 
 
 ## Check it
