@@ -17,7 +17,8 @@ cd $DATADIRECTORY
 ## TNF
 for FILE in $(ls $DATADIRECTORY/*.bam_sorted.bam.bw)
 do
-computeMatrix scale-regions -S ${FILE##*/} -R TNF.bed --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o ${FILE##*/}_TNF_matrix.mat.gz
+#computeMatrix scale-regions -S ${FILE##*/} -R TNF.bed --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o ${FILE##*/}_TNF_matrix.mat.gz
+computeMatrix scale-regions -S ${FILE##*/} -R TNF_matrix.mat.gz_kmeans_04_clean.bed --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o ${FILE##*/}_TNF_matrix.mat.gz
 done ;
 
 #################################################################################################################################################################
