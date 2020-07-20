@@ -32,6 +32,7 @@
     nohup bash 16_13_computeMatrixOperations.sh &> 16_13_computeMatrixOperations.out &
     nohup bash 17_WGCNA_on_RNA_Seq.sh &> 17_WGCNA_on_RNA_Seq.out &
     nohup bash 18_GBM_calculation.sh &> 18_GBM_calculation.out &
+    nohup bash 16_14_DeepTools_selected_genes.sh &> 16_14_DeepTools_selected_genes.out &
 
 
 ## Check it
