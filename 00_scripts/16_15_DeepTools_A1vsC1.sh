@@ -15,7 +15,7 @@ cd $DATADIRECTORY
 
 for FILE in $(ls $DATADIRECTORY/*.bam_sorted.bam.bw)
 do
-computeMatrix scale-regions -S ${FILE##*/} -R select_C1vsA1_p0_05_without_gene5615and26592.bed --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o ${FILE##*/}_select_C1vsA1_p0_05_without_gene5615and26592_matrix.mat.gz
+computeMatrix scale-regions -S ${FILE##*/} -R select_C1vsA1_p0_05_without_gene5615and26592_clean.bed --beforeRegionStartLength 3000 --regionBodyLength 5000 --afterRegionStartLength 3000 -o ${FILE##*/}_select_C1vsA1_p0_05_without_gene5615and26592_matrix.mat.gz
 done ;
 
 
