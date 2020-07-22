@@ -37,6 +37,7 @@
     nohup bash 16_16_DeepTools_all_ind_cbind.sh &> 16_16_DeepTools_all_ind_cbind.out &
     nohup bash 16_17_DeepTools_all_ind_cbind_A1vcC1.sh &> 16_17_DeepTools_all_ind_cbind_A1vcC1.out &
     nohup bash 16_18_DeepTools_all_ind_cbind_A1vcC1_without_2outliers.sh &> 16_18_DeepTools_all_ind_cbind_A1vcC1_without_2outliers.out &
+    nohup bash 16_19_DeepTools_all_ind_cbind_inversed.sh &> 16_19_DeepTools_all_ind_cbind_inversed.out &
 
 
 ## Check it
