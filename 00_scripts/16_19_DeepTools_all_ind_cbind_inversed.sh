@@ -51,33 +51,56 @@ cd $DATADIRECTORY
 #     --outFileSortedRegions all_genes_cbind_inversed_matrix.mat.gz_kmeans_04.bed
 #     
      
-computeMatrixOperations rbind -m Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix1.mat.gz
+#computeMatrixOperations rbind -m Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix1.mat.gz
+#
+#plotHeatmap -m Control_3_rbind_inversed_matrix.mat1.gz \
+#     -out Control_3_rbind_inversed_matrix.mat1.gz_kmeans_04.pdf \
+#     --colorMap RdBu \
+#     --whatToShow 'plot, heatmap and colorbar' \
+#     --zMin -3 --zMax 3 \
+#     --kmeans 4 \
+#     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat1.gz_kmeans_04.bed
+#     
+#computeMatrixOperations rbind -m Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Control_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat2.gz
+#
+#plotHeatmap -m Control_3_rbind_inversed_matrix.mat2.gz \
+#     -out Control_3_rbind_inversed_matrix.mat2.gz_kmeans_04.pdf \
+#     --colorMap RdBu \
+#     --whatToShow 'plot, heatmap and colorbar' \
+#     --zMin -3 --zMax 3 \
+#     --kmeans 4 \
+#     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat2.gz_kmeans_04.bed
+#     
+#computeMatrixOperations rbind -m Control_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat3.gz
+#
+#plotHeatmap -m Control_3_rbind_inversed_matrix.mat3.gz \
+#     -out Control_3_rbind_inversed_matrix.mat3.gz_kmeans_04.pdf \
+#     --colorMap RdBu \
+#     --whatToShow 'plot, heatmap and colorbar' \
+#     --zMin -3 --zMax 3 \
+#     --kmeans 4 \
+#     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat3.gz_kmeans_04.bed   
+	
+	
+	
+	
+computeMatrixOperations rbind -m Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat4.gz
 
-plotHeatmap -m Control_3_rbind_inversed_matrix.mat1.gz \
-     -out Control_3_rbind_inversed_matrix.mat1.gz_kmeans_04.pdf \
+plotHeatmap -m Control_3_rbind_inversed_matrix.mat4.gz \
+     -out Control_3_rbind_inversed_matrix.mat4.gz_kmeans_04.pdf \
      --colorMap RdBu \
      --whatToShow 'plot, heatmap and colorbar' \
      --zMin -3 --zMax 3 \
      --kmeans 4 \
-     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat1.gz_kmeans_04.bed
-     
-computeMatrixOperations rbind -m Acclimation_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Control_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat2.gz
+     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat4.gz_kmeans_04.bed  
 
-plotHeatmap -m Control_3_rbind_inversed_matrix.mat2.gz \
-     -out Control_3_rbind_inversed_matrix.mat2.gz_kmeans_04.pdf \
+computeMatrixOperations rbind -m Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30b_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat5.gz
+
+plotHeatmap -m Control_3_rbind_inversed_matrix.mat5.gz \
+     -out Control_3_rbind_inversed_matrix.mat4.gz_kmeans_05.pdf \
      --colorMap RdBu \
      --whatToShow 'plot, heatmap and colorbar' \
      --zMin -3 --zMax 3 \
      --kmeans 4 \
-     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat2.gz_kmeans_04.bed
-     
-computeMatrixOperations rbind -m Control_3_30a_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz Acclimation_3_30c_R1_paired_bismark_bt2_pe.deduplicated.bam_sorted.bam.bw_matrix.mat.gz -o Control_3_rbind_inversed_matrix.mat3.gz
-
-plotHeatmap -m Control_3_rbind_inversed_matrix.mat3.gz \
-     -out Control_3_rbind_inversed_matrix.mat3.gz_kmeans_04.pdf \
-     --colorMap RdBu \
-     --whatToShow 'plot, heatmap and colorbar' \
-     --zMin -3 --zMax 3 \
-     --kmeans 4 \
-     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat3.gz_kmeans_04.bed     
+     --outFileSortedRegions Control_3_rbind_inversed_matrix.mat4.gz_kmeans_05.bed  
      
