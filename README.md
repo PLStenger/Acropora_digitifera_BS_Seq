@@ -14,6 +14,7 @@
     nohup bash 10_flagstat.sh &> 10_flagstat.out &
     nohup bash 11_index_bam.sh &> 11_index_bam.out &
     nohup bash 12_methylkit_CpG_calling.sh &> 12_methylkit_CpG_calling.out &
+    nohup Rscript 12_methylkit_CpG_calling_trying_find_inversion.R &> 12_methylkit_CpG_calling_trying_find_inversion.out &
     nohup bash 13_intersect_genes.sh &> 13_intersect_genes.out &
     nohup bash 14_interesect_bed_for_methylome_characterisation.sh &> 14_interesect_bed_for_methylome_characterisation.out &
     nohup bash 15_deepTools_bam_coverage.sh &> 15_deepTools_bam_coverage.out &
