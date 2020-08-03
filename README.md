@@ -36,6 +36,7 @@
     nohup bash 16_14_DeepTools_selected_genes.sh &> 16_14_DeepTools_selected_genes.out &
     nohup bash 16_15_DeepTools_A1vsC1.sh &> 16_15_DeepTools_A1vsC1.out &
     nohup bash 16_16_DeepTools_all_ind_cbind.sh &> 16_16_DeepTools_all_ind_cbind.out &
+    nohup bash 16_16_02_DeepTools_all_ind_cbind_2replicat.sh &> 16_16_02_DeepTools_all_ind_cbind_2replicat.out &
     nohup bash 16_17_DeepTools_all_ind_cbind_A1vcC1.sh &> 16_17_DeepTools_all_ind_cbind_A1vcC1.out &
     nohup bash 16_18_DeepTools_all_ind_cbind_A1vcC1_without_2outliers.sh &> 16_18_DeepTools_all_ind_cbind_A1vcC1_without_2outliers.out &
     nohup bash 16_19_DeepTools_all_ind_cbind_inversed.sh &> 16_19_DeepTools_all_ind_cbind_inversed.out &
