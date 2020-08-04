@@ -32,6 +32,7 @@ cd $DATADIRECTORY
 #     --kmeans 4 \
 #     --outFileSortedRegions all_2_replicat_matrix.mat.gz_kmeans_04.bed
 
+# OK
 
 for FILE in $(ls $DATADIRECTORY/*.bam_sorted.bam.bw)
 do
