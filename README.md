@@ -66,3 +66,8 @@ Obtain count, min and max for each unique entry, useful for obtainning genes len
       print "----","-----","-------","-------"
       for(i in count) print i,count[i],min[i],max[i]
     }' input_file > output_file | column -t
+
+
+Known how many same genes are into same cluster (here, if only two replicate)
+
+    awk 'seen[$0]++ && seen[$0] == 2' 
