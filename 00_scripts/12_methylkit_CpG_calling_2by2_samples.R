@@ -40,7 +40,7 @@ my_meth_acclimation=processBismarkAln(location=list.bam_acclimation,
                 save.context=c("CpG"),
                 read.context="CpG",
                 mincov=10,
-                treatment=c(0,0,1,1,2,2,3,3,4,4,5,5))
+                treatment=c(0,0,1,1,2,2,3,3))
 
 save(my_meth_acclimation, file = "my_meth_acclimation_search_inversion.rda")
 #print(my_meth_acclimation[[1]]@dbpath)
