@@ -44,6 +44,7 @@
     nohup bash 16_19_DeepTools_all_ind_cbind_inversed.sh &> 16_19_DeepTools_all_ind_cbind_inversed.out &
     nohup bash 16_20_DeepTools_found_inversed_2by2.sh &> 16_20_DeepTools_found_inversed_2by2.out &
     nohup bash 16_21_DeepTools_2by2.sh &> 16_21_DeepTools_2by2.out &
+    nohup bash 19_chimeras_check_by_ANGSD.sh &> 19_chimeras_check_by_ANGSD.out &
 
 
 ## Check it
