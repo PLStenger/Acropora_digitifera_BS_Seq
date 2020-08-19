@@ -31,5 +31,30 @@ cd $DATADIRECTORY
 
 # Run the command line (command line find here: http://www.popgen.dk/angsd/index.php/ANGSD and output format find here: https://github.com/ANGSD/NgsRelate)
 
-./angsd -out angsdput.glf.gz -bam bam.filelist -GL 1 -doMaf 1 -doMajorMinor 1 -nThreads 10
+#./angsd -out angsdput.glf.gz -bam bam.filelist -GL 1 -doMaf 1 -doMajorMinor 1 -nThreads 10
+
+# I put the resulst here /home/stenger/stenger_data/EPIGENETIC_DATA/10_chimeras
+
+# head angsdput.glf.gz.mafs
+
+# chromo	position	major	minor	knownEM	nInd
+# NW_015441057.1	11	G	A	0.000001	1
+# NW_015441057.1	12	T	A	0.000003	2
+# NW_015441057.1	13	T	A	0.000003	2
+# NW_015441057.1	14	T	A	0.000007	4
+# NW_015441057.1	15	T	A	0.000007	4
+# NW_015441057.1	16	A	C	0.000007	4
+# NW_015441057.1	17	A	C	0.000004	5
+# NW_015441057.1	18	T	A	0.000004	5
+# NW_015441057.1	19	T	A	0.000004	5
+
+# Max nInd = 12
+# wc -l angsdput.glf.gz.mafs
+# 303983761 angsdput.glf.gz.mafs
+
+# Trying Beagle format
+# http://www.popgen.dk/angsd/index.php/Genotype_Likelihoods#Output
+./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 2e-6 -bam bam.filelist
+
+
 
