@@ -71,7 +71,31 @@ cd $DATADIRECTORY
 # (base) stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.mafs
 # 76384176 genolike.mafs
 
+# head genolike.beagle
+# (allele codes as 0=A, 1=C, 2=G, 3=T)
+
+# marker	allele1	allele2	Ind0	Ind0	Ind0	Ind1	Ind1	Ind1	Ind2	Ind2	Ind2	Ind3	Ind3	Ind3	Ind4	Ind4	Ind4	Ind5	Ind5	Ind5	Ind6	Ind6	Ind6	Ind7	Ind7	Ind7	Ind8	Ind8	Ind8	Ind9	Ind9	Ind9	Ind10	Ind10	Ind10	Ind11	Ind11	Ind11
+# NW_015441057.1_198	3	1	0.799738	0.199931	0.000331	0.941178	0.058822	0.000000	0.333333	0.333333	0.333333	0.941178	0.058822	0.000000	0.002640	0.997360	0.000000	0.819060	0.180940	0.000000	0.017693	0.109143	0.873164	0.888890	0.111108	0.000001	0.800002	0.199997	0.000001	0.000000	1.000000	0.000000	0.001006	0.998991	0.000003	0.678574	0.321406	0.000020
+# NW_015441057.1_202	2	0	0.799738	0.199931	0.000331	0.941178	0.058822	0.000000	0.333333	0.333333	0.333333	0.941178	0.058822	0.000000	0.002640	0.997360	0.000000	0.819060	0.180940	0.000000	0.017693	0.109143	0.873164	0.888891	0.111108	0.000001	0.800002	0.199997	0.000001	0.000000	1.000000	0.000000	0.000000	0.999993	0.000006	0.678574	0.321406	0.000020
+# 
+
 #awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$7"\t"$10"\t"$13"\t"$16"\t"$19"\t"$22"\t"$25"\t"$28"\t"$31"\t"$34"\t"$37}' genolike.beagle.txt > genolike.beagle_02.txt
 # And then go to "20_hclust_Genotype_Likelihoods.R" for producing the dendrogram
 
-./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 1e-9 -bam bam.filelist
+#./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 1e-9 -bam bam.filelist
+
+# stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.mafs
+# 76384176 genolike.mafs
+
+
+# Keep only A==G and G==A SNPs in order to delete the BiSulfite SNP effect (allele codes as 0=A, 1=C, 2=G, 3=T, so delete all T==C and C==T)
+# awk -F " " '{ if ( $2 != 1 && $3 != 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_03.txt
+# awk -F " " '{ if ( $2 != 3 && $3 != 1) print $0 }' genolike.beagle_03.txt > genolike.beagle_04.txt
+
+
+# stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l  genolike.beagle.txt
+# 71266926 genolike.beagle.txt
+# stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.beagle_03.txt
+# 51407488 genolike.beagle_03.txt
+# stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.beagle_04.txt
+# 35412639 genolike.beagle_04.txt
