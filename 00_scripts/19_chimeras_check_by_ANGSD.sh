@@ -71,4 +71,7 @@ cd $DATADIRECTORY
 # (base) stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.mafs
 # 76384176 genolike.mafs
 
+#awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$7"\t"$10"\t"$13"\t"$16"\t"$19"\t"$22"\t"$25"\t"$28"\t"$31"\t"$34"\t"$37}' genolike.beagle.txt > genolike.beagle_02.txt
+# And then go to "20_hclust_Genotype_Likelihoods.R" for producing the dendrogram
+
 ./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 1e-9 -bam bam.filelist
