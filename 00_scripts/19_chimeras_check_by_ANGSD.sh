@@ -54,7 +54,21 @@ cd $DATADIRECTORY
 
 # Trying Beagle format
 # http://www.popgen.dk/angsd/index.php/Genotype_Likelihoods#Output
-./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 2e-6 -bam bam.filelist
+#./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 2e-6 -bam bam.filelist
 
+# (base) stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ head genolike.mafs
+# chromo	position	major	minor	unknownEM	pu-EM	nInd
+# NW_015441057.1	38	T	C	0.082015	2.497617e-07	5
+# NW_015441057.1	45	T	C	0.293231	3.871244e-07	8
+# NW_015441057.1	50	G	A	0.274230	4.646336e-07	8
+# NW_015441057.1	55	T	C	0.274229	4.646343e-07	8
+# NW_015441057.1	56	T	C	0.274229	4.646343e-07	8
+# NW_015441057.1	57	G	A	0.274229	4.646343e-07	8
+# NW_015441057.1	58	T	C	0.259648	5.429251e-07	8
+# NW_015441057.1	60	T	C	0.292648	7.131057e-08	8
+# NW_015441057.1	69	T	C	0.295023	1.582572e-07	8
 
+# (base) stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.mafs
+# 76384176 genolike.mafs
 
+./angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1  -doMaf 2 -SNP_pval 1e-9 -bam bam.filelist
