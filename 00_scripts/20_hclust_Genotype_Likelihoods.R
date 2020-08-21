@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/10_chimeras")
-dat <- read.table("genolike.beagle_02.txt", header=T, row.names=1)
+dat <- read.table("genolike.beagle_04.txt", header=T, row.names=1)
 head(dat)
 
 dat2 <- dat[ , -c(1:2)]
