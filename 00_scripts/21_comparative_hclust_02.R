@@ -42,7 +42,7 @@ d2 <- as.dendrogram (hc2)
 #dev.off()
 
 
-pdf(file= 'Comparative_dendrogram_02_03.pdf' ,onefile=T,paper='A4')
+pdf(file= 'Comparative_dendrogram_02_03.pdf', onefile=T, paper='a4r')
 
 # Custom these kendo, and place them in a list
 
