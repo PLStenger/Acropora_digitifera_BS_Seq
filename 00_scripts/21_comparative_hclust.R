@@ -10,21 +10,21 @@ setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
 
 
 ## How many cluster is there (K-means) in CpG calling file?
-data <- read.table("Allmeth.norm.percent.txt", header=T)
-data <- head(data,10000)
-library(factoextra)
-pdf(file= 'fviz_nbclust_wss_CpG.pdf',  width=9, height=3)
-fviz_nbclust(data, FUN = hcut, method = "wss")
-dev.off()
-pdf(file= 'fviz_nbclust_silhouette_CpG.pdf',  width=9, height=3)
-fviz_nbclust(data, FUN = hcut, method = "silhouette")
-dev.off()
+#data <- read.table("Allmeth.norm.percent.txt", header=T)
+#data <- head(data,10000)
+#library(factoextra)
+#pdf(file= 'fviz_nbclust_wss_CpG.pdf',  width=9, height=3)
+#fviz_nbclust(data, FUN = hcut, method = "wss")
+#dev.off()
+#pdf(file= 'fviz_nbclust_silhouette_CpG.pdf',  width=9, height=3)
+#fviz_nbclust(data, FUN = hcut, method = "silhouette")
+#dev.off()
 
-library(cluster)
-pdf(file= 'clusGap_CpG.pdf',  width=9, height=3)
-gap_stat <- clusGap(data, FUN = hcut, nstart = 25, K.max = 10, B = 50)
-fviz_gap_stat(gap_stat)
-dev.off()
+#library(cluster)
+#pdf(file= 'clusGap_CpG.pdf',  width=9, height=3)
+#gap_stat <- clusGap(data, FUN = hcut, nstart = 25, K.max = 10, B = 50)
+#fviz_gap_stat(gap_stat)
+#dev.off()
 
 
 ## How many cluster is there (K-means) in GenoLike file?
@@ -43,11 +43,11 @@ pdf(file= 'fviz_nbclust_silhouette_GenoLike.pdf',  width=9, height=3)
 fviz_nbclust(dat4, FUN = hcut, method = "silhouette")
 dev.off()
 
-library(cluster)
-pdf(file= 'clusGap_GenoLike.pdf',  width=9, height=3)
-gap_stat <- clusGap(dat4, FUN = hcut, nstart = 25, K.max = 10, B = 50)
-fviz_gap_stat(gap_stat)
-dev.off()
+#library(cluster)
+#pdf(file= 'clusGap_GenoLike.pdf',  width=9, height=3)
+#gap_stat <- clusGap(dat4, FUN = hcut, nstart = 25, K.max = 10, B = 50)
+#fviz_gap_stat(gap_stat)
+#dev.off()
 
 
 
