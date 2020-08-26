@@ -11,6 +11,7 @@ setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
 
 ## How many cluster is there (K-means) in CpG calling file?
 data <- read.table("Allmeth.norm.percent.txt", header=T)
+data <- head(data,10000)
 library(factoextra)
 pdf(file= 'fviz_nbclust_wss_CpG.pdf',  width=9, height=3)
 fviz_nbclust(data, FUN = hcut, method = "wss")
