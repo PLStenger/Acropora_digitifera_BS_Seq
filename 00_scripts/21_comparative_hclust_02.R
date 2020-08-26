@@ -29,40 +29,52 @@ d1 <- as.dendrogram (hc)
 d2 <- as.dendrogram (hc2)
 
 # Create a list to hold dendrograms
-dend_list <- dendlist(d1, d2)
+#dend_list <- dendlist(d1, d2)
 
-pdf(file= 'Comparative_dendrogram_02_01.pdf' ,onefile=T,paper='A4')
+#pdf(file= 'Comparative_dendrogram_02_01.pdf' ,onefile=T,paper='A4')
 
 
 # Align and plot two dendrograms side by side
-dendlist(d1, d2) %>%
-  untangle(method = "step1side") %>% # Find the best alignment layout
-  tanglegram()                       # Draw the two dendrograms
+#dendlist(d1, d2) %>%
+#  untangle(method = "step1side") %>% # Find the best alignment layout
+#  tanglegram()                       # Draw the two dendrograms
 
-dev.off()
-
-
+#dev.off()
 
 
-
-
-pdf(file= 'Comparative_dendrogram_02_02.pdf' ,onefile=T,paper='A4')
+pdf(file= 'Comparative_dendrogram_02_03.pdf' ,onefile=T,paper='A4')
 
 # Custom these kendo, and place them in a list
+
+#dl <- dendlist(
+#  d1 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3),
+#  d2 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3)
+#)
+
+
 dl <- dendlist(
   d1 %>% 
-    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3),
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3)
-)
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
 
 # Plot them together
 tanglegram(dl, 
-           common_subtrees_color_lines = FALSE, highlight_distinct_edges  = TRUE, highlight_branches_lwd=FALSE, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
            margin_inner=7,
            lwd=2
 )
