@@ -9,21 +9,21 @@ library(dendextend)
 setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
 
 load("Allmeth.norm.rda")
-clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE)
+hc2 <- clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE)
 
-print("head(Allmeth.norm)")
-head(Allmeth.norm)
+#print("head(Allmeth.norm)")
+#head(Allmeth.norm)
 
-print("Euclidean distance CpG")
+#print("Euclidean distance CpG")
 # Euclidean distance
-dist2 <- dist(Allmeth.norm , diag=TRUE)
-head(dist2)
+#dist2 <- dist(Allmeth.norm , diag=TRUE)
+#head(dist2)
 
 # Hierarchical Clustering with hclust
-hc2 <- hclust(dist2)
+#hc2 <- hclust(dist2)
 
 # Plot the result
-plot(hc2)
+#plot(hc2)
 
 dat <- read.table("genolike.beagle_04.txt", header=T, row.names=1)
 head(dat)
