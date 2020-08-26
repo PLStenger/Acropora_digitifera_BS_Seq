@@ -16,7 +16,7 @@ head(Allmeth.norm)
 
 print("Euclidean distance CpG")
 # Euclidean distance
-dist2 <- dist(dat3 , diag=TRUE)
+dist2 <- dist(Allmeth.norm , diag=TRUE)
 head(dist2)
 
 # Hierarchical Clustering with hclust
