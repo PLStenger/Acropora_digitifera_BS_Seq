@@ -50,9 +50,9 @@ dl <- dendlist(
     set("branches_lty", 1) %>%
     set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange"), k=4) %>%
+    set("labels_col", value = c("skyblue", "orange", "red", "green"), k=4) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange"), k = 4)
+    set("branches_k_color", value = c("skyblue", "orange", "red", "green"), k = 4)
 ) %>%
   untangle(method = "step1side") # Find the best alignment layout
 
@@ -89,9 +89,9 @@ dl <- dendlist(
     set("branches_lty", 1) %>%
     set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange"), k=5) %>%
+    set("labels_col", value = c("skyblue", "orange", "red", "green", "grey"), k=5) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange"), k = 5)
+    set("branches_k_color", value = c("skyblue", "orange", "red", "green", "grey"), k = 5)
 ) %>%
   untangle(method = "step1side") # Find the best alignment layout
 
@@ -128,9 +128,9 @@ dl <- dendlist(
     set("branches_lty", 1) %>%
     set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange"), k=6) %>%
+    set("labels_col", value = c("skyblue", "orange", "red", "green", "grey", "blue"), k=6) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange"), k = 6)
+    set("branches_k_color", value = c("skyblue", "orange", "red", "green", "grey", "blue"), k = 6)
 ) %>%
   untangle(method = "step1side") # Find the best alignment layout
 
@@ -168,9 +168,9 @@ dl <- dendlist(
     set("branches_lty", 1) %>%
     set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange"), k=3) %>%
+    set("labels_col", value = c("skyblue", "orange", "red"), k=3) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange"), k = 3)
+    set("branches_k_color", value = c("skyblue", "orange", "red"), k = 3)
 ) %>%
   untangle(method = "step1side") # Find the best alignment layout
 
