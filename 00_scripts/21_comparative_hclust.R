@@ -34,6 +34,8 @@ head(dat2)
 dat3 <- t(dat2)
 dat4 <- head(dat3,1000)
 
+pdf(file= 'nbclust.pdf')
+
 library(factoextra)
 fviz_nbclust(dat4, FUN = hcut, method = "wss")
 fviz_nbclust(dat4, FUN = hcut, method = "silhouette")
@@ -41,5 +43,5 @@ library(cluster)
 gap_stat <- clusGap(dat4, FUN = hcut, nstart = 25, K.max = 10, B = 50)
 fviz_gap_stat(gap_stat)
 
-
+dev.off()
 
