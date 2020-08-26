@@ -42,7 +42,32 @@ d2 <- as.dendrogram (hc2)
 #dev.off()
 
 
-pdf(file= 'Comparative_dendrogram_02_03.pdf', onefile=T, paper='a4r')
+pdf(file= 'Comparative_dendrogram_02_03_kmeans4.pdf', onefile=T, paper='a4r')
+
+dl <- dendlist(
+  d1 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2),
+  d2 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=4) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 4)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
+
+# Plot them together
+tanglegram(dl, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
+           margin_inner=7,
+           lwd=2
+)
+
+dev.off()
+
+pdf(file= 'Comparative_dendrogram_02_03_kmeans5.pdf', onefile=T, paper='a4r')
 
 # Custom these kendo, and place them in a list
 
@@ -64,9 +89,9 @@ dl <- dendlist(
     set("branches_lty", 1) %>%
     set("branches_k_color", value = c("skyblue", "orange"), k = 2),
   d2 %>% 
-    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
+    set("labels_col", value = c("skyblue", "orange"), k=5) %>%
     set("branches_lty", 1) %>%
-    set("branches_k_color", value = c("skyblue", "orange"), k = 2)
+    set("branches_k_color", value = c("skyblue", "orange"), k = 5)
 ) %>%
   untangle(method = "step1side") # Find the best alignment layout
 
@@ -80,3 +105,83 @@ tanglegram(dl,
 )
 
 dev.off()
+
+pdf(file= 'Comparative_dendrogram_02_03_kmeans6.pdf', onefile=T, paper='a4r')
+
+# Custom these kendo, and place them in a list
+
+#dl <- dendlist(
+#  d1 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3),
+#  d2 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3)
+#)
+
+
+dl <- dendlist(
+  d1 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2),
+  d2 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=6) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 6)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
+
+# Plot them together
+tanglegram(dl, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
+           margin_inner=7,
+           lwd=2
+)
+
+dev.off()
+
+
+pdf(file= 'Comparative_dendrogram_02_03_kmeans3.pdf', onefile=T, paper='a4r')
+
+# Custom these kendo, and place them in a list
+
+#dl <- dendlist(
+#  d1 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3),
+#  d2 %>% 
+#    set("labels_col", value = c("skyblue", "orange", "grey"), k=3) %>%
+#    set("branches_lty", 1) %>%
+#    set("branches_k_color", value = c("skyblue", "orange", "grey"), k = 3)
+#)
+
+
+dl <- dendlist(
+  d1 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2),
+  d2 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=3) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 3)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
+
+# Plot them together
+tanglegram(dl, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
+           margin_inner=7,
+           lwd=2
+)
+
+dev.off()
+
