@@ -3,7 +3,7 @@
 library(methylKit)
 library(graphics)
 library(tools)
-install.packages("dendextend")
+#install.packages("dendextend")
 library(dendextend)
 
 setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
