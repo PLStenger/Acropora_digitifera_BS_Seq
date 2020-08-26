@@ -47,6 +47,7 @@
     nohup bash 19_chimeras_check_by_ANGSD.sh &> 19_chimeras_check_by_ANGSD.out &
     nohup Rscript 20_hclust_Genotype_Likelihoods.R &> 20_hclust_Genotype_Likelihoods.out &
     nohup Rscript 21_comparative_hclust.R &> 21_comparative_hclust.out &
+    nohup Rscript 21_comparative_hclust_02.R &> 21_comparative_hclust_02.out &
 
 
 
