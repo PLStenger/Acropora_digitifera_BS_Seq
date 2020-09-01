@@ -49,7 +49,7 @@
     nohup Rscript 20_hclust_Genotype_Likelihoods.R &> 20_hclust_Genotype_Likelihoods.out &
     nohup Rscript 21_comparative_hclust.R &> 21_comparative_hclust.out &
     nohup Rscript 21_comparative_hclust_02.R &> 21_comparative_hclust_02.out &
-
+    nohup bash 22_interesect_genomic_element.sh &> 22_interesect_genomic_element.out &
 
 
 ## Check it
