@@ -46,11 +46,12 @@ DATABASE=/home/stenger/stenger_data/NEW_GENOME_ADIG2020/00_custom/Database_ID_ge
 
 cd $DATADIRECTORY
 
-rm *txt_intersect_genes*
+#rm *txt_intersect_genes*
 rm *work_in_progress*
 
 
-for FILE in $(ls $DATADIRECTORY/*diff20*)
+#for FILE in $(ls $DATADIRECTORY/*diff20*)
+for FILE in $(ls $DATADIRECTORY/*_Allmeth.norm_unite.txt)
 
 do
 
