@@ -51,14 +51,31 @@ rm *work_in_progress*
 
 
 #for FILE in $(ls $DATADIRECTORY/*diff20*)
-for FILE in $(ls $DATADIRECTORY/*_Allmeth.norm_unite.txt)
+#for FILE in $(ls $DATADIRECTORY/*_Allmeth.norm_unite.txt)
+
+#do
+
+#awk '{print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8}' ${FILE##*/} > ${FILE##*/}_work_in_progress_01.txt
+#sed -i '1d' ${FILE##*/}_work_in_progress_01.txt
+#bedtools intersect -a ${FILE##*/}_work_in_progress_01.txt -b $DATABASE -loj > ${FILE##*/}_intersect_genes.txt
+#sed -i '1s/^/chr	start	end	strand	pvalue	qvalue	meth.diff	scaffold	start	end	gene\n/' ${FILE##*/}_intersect_genes.txt
+#rm ${FILE##*/}_work_in_progress_*.txt
+
+#done;
+
+
+
+
+for FILE in $(ls $DATADIRECTORY/mydmr_Diffmeth_*)
 
 do
 
-awk '{print $2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8}' ${FILE##*/} > ${FILE##*/}_work_in_progress_01.txt
+awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10}' ${FILE##*/} > ${FILE##*/}_work_in_progress_01.txt
 sed -i '1d' ${FILE##*/}_work_in_progress_01.txt
 bedtools intersect -a ${FILE##*/}_work_in_progress_01.txt -b $DATABASE -loj > ${FILE##*/}_intersect_genes.txt
 sed -i '1s/^/chr	start	end	strand	pvalue	qvalue	meth.diff	scaffold	start	end	gene\n/' ${FILE##*/}_intersect_genes.txt
 rm ${FILE##*/}_work_in_progress_*.txt
 
 done;
+
+
