@@ -16,14 +16,8 @@ dat3 <- t(dat2)
 dist <- dist(dat3 , diag=TRUE)
 
 # Hierarchical Clustering with hclust
-hc <- hclust(dist)
+hc <- hclust(dist, method = "average")
 
 # Plot the result
 plot(hc)
 
-
-# Hierarchical Clustering with hclust
-hc2 <- hc/1000
-
-# Plot the result
-plot(hc2)
