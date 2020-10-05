@@ -46,6 +46,7 @@
     nohup bash 16_20_DeepTools_found_inversed_2by2.sh &> 16_20_DeepTools_found_inversed_2by2.out &
     nohup bash 16_21_DeepTools_2by2.sh &> 16_21_DeepTools_2by2.out &
     nohup bash 19_chimeras_check_by_ANGSD.sh &> 19_chimeras_check_by_ANGSD.out &
+    nohup bash 19_02_NgsRelate.sh &> 19_02_NgsRelate.out &
     nohup Rscript 20_hclust_Genotype_Likelihoods.R &> 20_hclust_Genotype_Likelihoods.out &
     nohup Rscript 21_comparative_hclust.R &> 21_comparative_hclust.out &
     nohup Rscript 21_comparative_hclust_02.R &> 21_comparative_hclust_02.out &
