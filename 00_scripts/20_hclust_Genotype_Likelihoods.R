@@ -13,7 +13,7 @@ head(dat2)
 dat3 <- t(dat2)
 
 # Euclidean distance
-dist <- dist(dat3 , diag=TRUE)/1000
+dist <- dist(dat3 , diag=TRUE)/10000
 
 # Hierarchical Clustering with hclust
 hc <- hclust(dist, method = "average")
