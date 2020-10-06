@@ -54,17 +54,17 @@ d1 <- as.dendrogram (hc)
 d2 <- as.dendrogram (hc2)
 
 # Create a list to hold dendrograms
-#dend_list <- dendlist(d1, d2)
+dend_list <- dendlist(d1, d2)
 
-#pdf(file= 'Comparative_dendrogram_02_01.pdf' ,onefile=T,paper='A4')
+pdf(file= 'Comparative_dendrogram_02_01.pdf' ,onefile=T,paper='A4')
 
 
 # Align and plot two dendrograms side by side
-#dendlist(d1, d2) %>%
-#  untangle(method = "step1side") %>% # Find the best alignment layout
-#  tanglegram()                       # Draw the two dendrograms
+dendlist(d1, d2) %>%
+  untangle(method = "step1side") %>% # Find the best alignment layout
+  tanglegram()                       # Draw the two dendrograms
 
-#dev.off()
+dev.off()
 
 
 pdf(file= 'Comparative_dendrogram_02_03_kmeans4.pdf', onefile=T, paper='a4r')
@@ -91,6 +91,59 @@ tanglegram(dl,
 )
 
 dev.off()
+
+
+
+pdf(file= 'Comparative_dendrogram_02_03_kmeans2_2.pdf', onefile=T, paper='a4r')
+
+dl <- dendlist(
+  d1 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 2),
+  d2 %>% 
+    set("labels_col", value = c("skyblue", "orange", "red", "green"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange", "red", "green"), k = 2)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
+
+# Plot them together
+tanglegram(dl, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
+           margin_inner=7,
+           lwd=2
+)
+
+dev.off()
+
+pdf(file= 'Comparative_dendrogram_02_03_kmeans3_2.pdf', onefile=T, paper='a4r')
+
+dl <- dendlist(
+  d1 %>% 
+    set("labels_col", value = c("skyblue", "orange"), k=3) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange"), k = 3),
+  d2 %>% 
+    set("labels_col", value = c("skyblue", "orange", "red", "green"), k=2) %>%
+    set("branches_lty", 1) %>%
+    set("branches_k_color", value = c("skyblue", "orange", "red", "green"), k = 2)
+) %>%
+  untangle(method = "step1side") # Find the best alignment layout
+
+# Plot them together
+tanglegram(dl, 
+           common_subtrees_color_lines = TRUE, 
+           highlight_distinct_edges  = TRUE, 
+           highlight_branches_lwd = FALSE, 
+           margin_inner=7,
+           lwd=2
+)
+
+dev.off()
+
 
 pdf(file= 'Comparative_dendrogram_02_03_kmeans5.pdf', onefile=T, paper='a4r')
 
