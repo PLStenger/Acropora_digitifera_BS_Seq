@@ -11,16 +11,41 @@ setwd("/home/stenger/stenger_data/EPIGENETIC_DATA/05_02_bismark")
 load("Allmeth.norm.rda")
 hc2 <- clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE)
 
-dat <- read.table("genolike.beagle_04.txt", header=T, row.names=1)
-dat2 <- dat[ , -c(1:2)]
-colnames(dat2) <- c("Acclimation_1_31_5a", "Acclimation_1_31_5b", "Acclimation_1_31_5c", "Acclimation_3_30a", "Acclimation_3_30b", "Acclimation_3_30c", "Control_1_30a", "Control_1_30b", "Control_1_30c", "Control_3_30a", "Control_3_30b", "Control_3_30c")
-dat3 <- t(dat2)
+#dat <- read.table("genolike.beagle_04.txt", header=T, row.names=1)
+#dat2 <- dat[ , -c(1:2)]
+#colnames(dat2) <- c("Acclimation_1_31_5a", "Acclimation_1_31_5b", "Acclimation_1_31_5c", "Acclimation_3_30a", "Acclimation_3_30b", "Acclimation_3_30c", "Control_1_30a", "Control_1_30b", "Control_1_30c", "Control_3_30a", "Control_3_30b", "Control_3_30c")
+#dat3 <- t(dat2)
 
 # Euclidean distance
-dist <- dist(dat3 , diag=TRUE)
+#dist <- dist(dat3 , diag=TRUE)
 
 # Hierarchical Clustering with hclust
-hc <- hclust(dist)
+#hc <- hclust(dist)
+
+
+dat <- read.table("all.ibs.txt", header=T, row.names=1)
+#head(dat)
+#tail(dat)
+
+row.names(dat) <- c("Acclimation_1_31_5a",
+  "Acclimation_1_31_5b",
+  "Acclimation_1_31_5c",
+  "Acclimation_3_30a",
+  "Acclimation_3_30b",
+  "Acclimation_3_30c",
+  "Control_1_30a",
+  "Control_1_30b",
+  "Control_1_30c",
+  "Control_3_30a",
+  "Control_3_30b",
+  "Control_3_30c")
+
+# Euclidean distance
+dist <- dist(dat , diag=TRUE)/10000000
+
+# Hierarchical Clustering with hclust
+hc <- hclust(dist, method = "average")
+
 
 
 
