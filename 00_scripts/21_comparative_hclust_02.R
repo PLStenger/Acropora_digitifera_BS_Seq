@@ -23,7 +23,7 @@ hc2 <- clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE
 #hc <- hclust(dist)
 
 
-dat <- read.table("all.ibs.txt", header=T, row.names=1)
+dat <- read.table("all.ibs", header=T, row.names=1)
 #head(dat)
 #tail(dat)
 
