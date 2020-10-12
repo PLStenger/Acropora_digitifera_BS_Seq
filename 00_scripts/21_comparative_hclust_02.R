@@ -27,6 +27,9 @@ dat <- read.table("all.ibs", header=T, row.names=1)
 #head(dat)
 #tail(dat)
 
+# Test for only A/G Snps
+dat <- data.frame(dat$ind, dat$nSites, dat$Llike, dat$nAG)
+
 row.names(dat) <- c("Acclimation_1_31_5a",
   "Acclimation_1_31_5b",
   "Acclimation_1_31_5c",
