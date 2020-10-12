@@ -28,7 +28,7 @@ head(dat)
 #tail(dat)
 
 # Test for only A/G Snps
-dat <- data.frame(c(dat$ind, dat$nSites, dat$Llike, dat$nAG))
+dat <- data.frame(c(dat$nSites, dat$Llike, dat$nAG))
 
 row.names(dat) <- c("Acclimation_1_31_5a",
   "Acclimation_1_31_5b",
