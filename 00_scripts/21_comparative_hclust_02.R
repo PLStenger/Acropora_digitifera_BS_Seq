@@ -24,11 +24,12 @@ hc2 <- clusterSamples(Allmeth.norm, dist="correlation", method="ward", plot=TRUE
 
 
 dat <- read.table("all.ibs", header=T, row.names=1)
-head(dat)
+dat
 #tail(dat)
 
 # Test for only A/G Snps
 dat <- data.frame(c(dat$nSites, dat$Llike, dat$nAG))
+dat
 
 row.names(dat) <- c("Acclimation_1_31_5a",
   "Acclimation_1_31_5b",
