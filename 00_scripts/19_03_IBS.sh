@@ -15,8 +15,8 @@ cd $DATADIRECTORY
 # http://www.popgen.dk/angsd/index.php/Relatedness#How_to_get_the_IBS_pattern
 # http://www.popgen.dk/angsd/index.php/Genotype_Distribution
 
-#./angsd -GL 1 -out genolike -doGlf 1 -bam bam.filelist
-./angsd -GL 1 -out genolike -doGlf 1 -SNP_pval 1e-9 -bam bam.filelist 
+./angsd -GL 1 -out genolike -doGlf 1 -bam bam.filelist
+#./angsd -GL 1 -out genolike -doGlf 1 -SNP_pval 1e-9 -bam bam.filelist 
 
 # Estimate all 10 genotype fractions for each of the 12 individuals
 misc/ibs -f genolike.glf.gz -nInd 12 -o all
