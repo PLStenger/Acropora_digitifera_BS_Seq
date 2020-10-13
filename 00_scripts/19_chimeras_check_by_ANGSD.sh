@@ -99,3 +99,8 @@ cd $DATADIRECTORY
 # 51407488 genolike.beagle_03.txt
 # stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.beagle_04.txt
 # 35412639 genolike.beagle_04.txt
+
+# in order to obtain a file that I could use as input for adegenet (R) for AMOVA:
+# https://popgen.nescent.org/DifferentiationSNP.html
+# from http://www.popgen.dk/angsd/index.php/Genotype_calling
+./angsd -bam bam.filelist -GL 1 -out outfile -doMaf 2 -doMajorMinor 1 -SNP_pval 0.000001 -doGeno 5 -doPost 1 -postCutoff 0.95
