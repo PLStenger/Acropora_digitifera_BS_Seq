@@ -48,6 +48,7 @@
     nohup bash 19_chimeras_check_by_ANGSD.sh &> 19_chimeras_check_by_ANGSD.out &
     nohup bash 19_02_NgsRelate.sh &> 19_02_NgsRelate.out &
     nohup bash 19_03_IBS.sh &> 19_03_IBS.out &
+    nohup bash 19_04_format_input.sh &> 19_04_format_input.out &
     nohup Rscript 20_hclust_Genotype_Likelihoods.R &> 20_hclust_Genotype_Likelihoods.out &
     nohup Rscript 21_comparative_hclust.R &> 21_comparative_hclust.out &
     nohup Rscript 21_comparative_hclust_02.R &> 21_comparative_hclust_02.out &
