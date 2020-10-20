@@ -48,6 +48,21 @@ str(dat)
 dat2 <- data.frame(dat$nSites, dat$Llike, dat$nAG)
 head(dat2)
 
+row.names(dat2) <- c("Acclimation_1_31_5a",
+  "Acclimation_1_31_5b",
+  "Acclimation_1_31_5c",
+  "Acclimation_3_30a",
+  "Acclimation_3_30b",
+  "Acclimation_3_30c",
+  "Control_1_30a",
+  "Control_1_30b",
+  "Control_1_30c",
+  "Control_3_30a",
+  "Control_3_30b",
+  "Control_3_30c")
+
+head(dat2)
+
 
 # Euclidean distance
 dist <- dist(dat2 , diag=TRUE)/10000000
