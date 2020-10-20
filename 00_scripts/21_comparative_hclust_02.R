@@ -28,10 +28,6 @@ dat <- read.table("all.ibs", header=T, row.names=1)
 #tail(dat)
 head(dat)
 
-# Test for only A/G Snps
-dat <- as.data.frame(dat$nSites, dat$Llike, dat$nAG)
-head(dat)
-
 row.names(dat) <- c("Acclimation_1_31_5a",
   "Acclimation_1_31_5b",
   "Acclimation_1_31_5c",
@@ -45,8 +41,15 @@ row.names(dat) <- c("Acclimation_1_31_5a",
   "Control_3_30b",
   "Control_3_30c")
 
+head(dat)
+
+# Test for only A/G Snps
+dat2 <- as.data.frame(dat$nSites, dat$Llike, dat$nAG)
+head(dat2)
+
+
 # Euclidean distance
-dist <- dist(dat , diag=TRUE)/10000000
+dist <- dist(dat2 , diag=TRUE)/10000000
 
 # Hierarchical Clustering with hclust
 hc <- hclust(dist, method = "average")
