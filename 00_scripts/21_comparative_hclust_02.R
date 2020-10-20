@@ -42,9 +42,10 @@ row.names(dat) <- c("Acclimation_1_31_5a",
   "Control_3_30c")
 
 head(dat)
+str(dat)
 
 # Test for only A/G Snps
-dat2 <- as.data.frame(dat$nSites, dat$Llike, dat$nAG)
+dat2 <- data.frame(dat$nSites, dat$Llike, dat$nAG)
 head(dat2)
 
 
