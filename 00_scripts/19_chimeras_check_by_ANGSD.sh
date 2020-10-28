@@ -87,10 +87,21 @@ cd $DATADIRECTORY
 # stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.mafs
 # 76384176 genolike.mafs
 
-
+# (allele codes as 0=A, 1=C, 2=G, 3=T)
 # Keep only A==G and G==A SNPs in order to delete the BiSulfite SNP effect (allele codes as 0=A, 1=C, 2=G, 3=T, so delete all T==C and C==T)
-# awk -F " " '{ if ( $2 != 1 && $3 != 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_03.txt
-# awk -F " " '{ if ( $2 != 3 && $3 != 1) print $0 }' genolike.beagle_03.txt > genolike.beagle_04.txt
+# awk -F " " '{ if ( $2 != 1 && $3 != 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_03.txt # C==T
+# awk -F " " '{ if ( $2 != 3 && $3 != 1) print $0 }' genolike.beagle_03.txt > genolike.beagle_04.txt # T==C
+# awk -F " " '{ if ( $2 != 0 && $3 != 1) print $0 }' genolike.beagle_04.txt > genolike.beagle_05.txt # A==C
+# awk -F " " '{ if ( $2 != 1 && $3 != 0) print $0 }' genolike.beagle_05.txt > genolike.beagle_06.txt # C==A
+awk -F " " '{ if ( $2 != 3 && $3 != 0) print $0 }' genolike.beagle_06.txt > genolike.beagle_07.txt # T==A
+awk -F " " '{ if ( $2 != 0 && $3 != 0) print $3 }' genolike.beagle_07.txt > genolike.beagle_08.txt # A==T
+awk -F " " '{ if ( $2 != 2 && $3 != 3) print $3 }' genolike.beagle_08.txt > genolike.beagle_09.txt # G==T
+awk -F " " '{ if ( $2 != 3 && $3 != 2) print $3 }' genolike.beagle_09.txt > genolike.beagle_10.txt # T==G
+awk -F " " '{ if ( $2 != 1 && $3 != 2) print $3 }' genolike.beagle_10.txt > genolike.beagle_11.txt # C==G
+awk -F " " '{ if ( $2 != 2 && $3 != 1) print $3 }' genolike.beagle_11.txt > genolike.beagle_12.txt # G==C
+
+
+
 
 
 # stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l  genolike.beagle.txt
@@ -99,6 +110,8 @@ cd $DATADIRECTORY
 # 51407488 genolike.beagle_03.txt
 # stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.beagle_04.txt
 # 35412639 genolike.beagle_04.txt
+# stenger@sarah-Wild-Dog-Pro:~/stenger_data/EPIGENETIC_DATA/10_chimeras$ wc -l genolike.beagle_05.txt
+# 19664071 genolike.beagle_05.txt
 
 # in order to obtain a file that I could use as input for adegenet (R) for AMOVA:
 # https://popgen.nescent.org/DifferentiationSNP.html
