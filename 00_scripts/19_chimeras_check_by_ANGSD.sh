@@ -93,14 +93,64 @@ cd $DATADIRECTORY
 # awk -F " " '{ if ( $2 != 3 && $3 != 1) print $0 }' genolike.beagle_03.txt > genolike.beagle_04.txt # T==C
 # awk -F " " '{ if ( $2 != 0 && $3 != 1) print $0 }' genolike.beagle_04.txt > genolike.beagle_05.txt # A==C
 # awk -F " " '{ if ( $2 != 1 && $3 != 0) print $0 }' genolike.beagle_05.txt > genolike.beagle_06.txt # C==A
-awk -F " " '{ if ( $2 != 3 && $3 != 0) print $0 }' genolike.beagle_06.txt > genolike.beagle_07.txt # T==A
-awk -F " " '{ if ( $2 != 0 && $3 != 0) print $3 }' genolike.beagle_07.txt > genolike.beagle_08.txt # A==T
-awk -F " " '{ if ( $2 != 2 && $3 != 3) print $3 }' genolike.beagle_08.txt > genolike.beagle_09.txt # G==T
-awk -F " " '{ if ( $2 != 3 && $3 != 2) print $3 }' genolike.beagle_09.txt > genolike.beagle_10.txt # T==G
-awk -F " " '{ if ( $2 != 1 && $3 != 2) print $3 }' genolike.beagle_10.txt > genolike.beagle_11.txt # C==G
-awk -F " " '{ if ( $2 != 2 && $3 != 1) print $3 }' genolike.beagle_11.txt > genolike.beagle_12.txt # G==C
+# BUG FROM THIS POINT
+# awk -F " " '{ if ( $2 != 3 && $3 != 0) print $0 }' genolike.beagle_06.txt > genolike.beagle_07.txt # T==A
+# awk -F " " '{ if ( $2 != 0 && $3 != 3) print $0 }' genolike.beagle_07.txt > genolike.beagle_08.txt # A==T
+# awk -F " " '{ if ( $2 != 2 && $3 != 3) print $0 }' genolike.beagle_08.txt > genolike.beagle_09.txt # G==T
+# awk -F " " '{ if ( $2 != 3 && $3 != 2) print $0 }' genolike.beagle_09.txt > genolike.beagle_10.txt # T==G
+# awk -F " " '{ if ( $2 != 1 && $3 != 2) print $0 }' genolike.beagle_10.txt > genolike.beagle_11.txt # C==G
+# awk -F " " '{ if ( $2 != 2 && $3 != 1) print $0 }' genolike.beagle_11.txt > genolike.beagle_12.txt # G==C
 
 
+awk '{print $2}' genolike.beagle_02.txt | sort | uniq -c
+# 15892525 0
+# 19724947 1
+# 19700562 2
+# 15948891 3
+#       1 allele1
+
+awk '{print $3}' genolike.beagle_02.txt | sort | uniq -c
+# 19795576 0
+# 15846464 1
+# 15799343 2
+# 19825542 3
+#       1 allele2
+
+####################################
+### 71266926 genolike.beagle.txt ###
+####################################
+# (allele codes as 0=A, 1=C, 2=G, 3=T)
+
+awk -F " " '{ if ( $2 == 0 && $3 == 2) print $0 }' genolike.beagle_02.txt > genolike.beagle_A_G.txt 
+# wc -l genolike.beagle_A_G.txt
+# 15748568 genolike.beagle_A_G.txt
+awk -F " " '{ if ( $2 == 2 && $3 == 0) print $0 }' genolike.beagle_02.txt > genolike.beagle_G_A.txt
+# 19664070 genolike.beagle_G_A.txt
+awk -F " " '{ if ( $2 == 1 && $3 == 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_C_T.txt
+# 19691051 genolike.beagle_C_T.txt
+awk -F " " '{ if ( $2 == 3 && $3 == 1) print $0 }' genolike.beagle_02.txt > genolike.beagle_T_C.txt
+# 15800506 genolike.beagle_T_C.txt
+awk -F " " '{ if ( $2 == 2 && $3 == 1) print $0 }' genolike.beagle_02.txt > genolike.beagle_G_C.txt
+# 4369 genolike.beagle_G_C.txt
+awk -F " " '{ if ( $2 == 1 && $3 == 2) print $0 }' genolike.beagle_02.txt > genolike.beagle_C_G.txt
+# 4615 genolike.beagle_C_G.txt
+awk -F " " '{ if ( $2 == 1 && $3 == 0) print $0 }' genolike.beagle_02.txt > genolike.beagle_C_A.txt
+# 29281 genolike.beagle_C_A.txt
+awk -F " " '{ if ( $2 == 0 && $3 == 1) print $0 }' genolike.beagle_02.txt > genolike.beagle_A_C.txt
+# 41589 genolike.beagle_A_C.txt
+awk -F " " '{ if ( $2 == 0 && $3 == 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_A_T.txt
+# 102368 genolike.beagle_A_T.txt
+awk -F " " '{ if ( $2 == 3 && $3 == 0) print $0 }' genolike.beagle_02.txt > genolike.beagle_T_A.txt
+# 102225 genolike.beagle_T_A.txt
+awk -F " " '{ if ( $2 == 3 && $3 == 2) print $0 }' genolike.beagle_02.txt > genolike.beagle_T_G.txt
+# 46160 genolike.beagle_T_G.txt
+awk -F " " '{ if ( $2 == 2 && $3 == 3) print $0 }' genolike.beagle_02.txt > genolike.beagle_G_T.txt
+# 32123 genolike.beagle_G_T.txt
+
+cat genolike.beagle_A_G.txt genolike.beagle_G_A.txt > genolike.beagle_A_G_G_A.txt 
+# wc -l genolike.beagle_A_G_G_A.txt 
+# 35412638 genolike.beagle_A_G_G_A.txt
+# 15,748,568 + 19,664,070 = 35,412,638
 
 
 
