@@ -22,7 +22,7 @@ hc <- hclust(dist, method = "average")
 plot(hc, main = "all SNPs")
 
 
-dat <- read.table("genolike.beagle_04.txt", header=T, row.names=1)
+dat <- read.table("genolike.beagle_A_G_G_A.txt", header=F, row.names=1)
 head(dat)
 
 dat2 <- dat[ , -c(1:2)]
